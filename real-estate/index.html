@@ -1297,18 +1297,6 @@
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            Realtor.com
-                        </div>
-                        <div class="directory-badge">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            Redfin
-                        </div>
-                        <div class="directory-badge">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
                             Google Business
                         </div>
                         <div class="directory-badge">
@@ -1316,12 +1304,6 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             Yelp
-                        </div>
-                        <div class="directory-badge">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            Facebook
                         </div>
                         <div class="directory-badge">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -1521,7 +1503,7 @@
                             <div class="score-label">consistency</div>
                         </div>
                         <h3 class="score-title" id="scoreTitle">Your NAP Consistency Score</h3>
-                        <p class="score-subtitle" id="scoreSubtitle">Based on 7 directory checks</p>
+                        <p class="score-subtitle" id="scoreSubtitle">Based on 4 directory checks</p>
                     </div>
 
                     <div class="results-breakdown">
@@ -1588,21 +1570,7 @@
                 id: 'zillow',
                 name: 'Zillow',
                 shortName: 'Z',
-                searchUrl: (query) => `https://www.zillow.com/professionals/${encodeURIComponent(query)}/`,
-                status: null
-            },
-            {
-                id: 'realtor',
-                name: 'Realtor.com',
-                shortName: 'R',
-                searchUrl: (query) => `https://www.realtor.com/realestateagents/${encodeURIComponent(query)}`,
-                status: null
-            },
-            {
-                id: 'redfin',
-                name: 'Redfin',
-                shortName: 'RF',
-                searchUrl: (query) => `https://www.redfin.com/real-estate-agents/${encodeURIComponent(query)}`,
+                searchUrl: (query) => `https://www.google.com/search?q=${encodeURIComponent('site:zillow.com ' + query)}`,
                 status: null
             },
             {
@@ -1616,21 +1584,14 @@
                 id: 'yelp',
                 name: 'Yelp',
                 shortName: 'Y',
-                searchUrl: (query) => `https://www.yelp.com/search?find_desc=${encodeURIComponent(query)}&find_loc=`,
-                status: null
-            },
-            {
-                id: 'facebook',
-                name: 'Facebook',
-                shortName: 'FB',
-                searchUrl: (query) => `https://www.facebook.com/search/pages?q=${encodeURIComponent(query)}`,
+                searchUrl: (query) => `https://www.google.com/search?q=${encodeURIComponent('site:yelp.com ' + query)}`,
                 status: null
             },
             {
                 id: 'bbb',
                 name: 'BBB',
                 shortName: 'BBB',
-                searchUrl: (query) => `https://www.bbb.org/search?find_country=USA&find_text=${encodeURIComponent(query)}`,
+                searchUrl: (query) => `https://www.google.com/search?q=${encodeURIComponent('site:bbb.org ' + query)}`,
                 status: null
             }
         ];
