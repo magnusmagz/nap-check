@@ -1,0 +1,16 @@
+[build]
+  publish = "."
+
+# Redirect trailing slashes
+[[redirects]]
+  from = "/*/"
+  to = "/:splat/"
+  status = 200
+
+# Pretty URLs (serve index.html for directory requests)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

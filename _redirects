@@ -1,0 +1,7 @@
+# Netlify redirects
+
+# Old article URLs redirect to new structure (for SEO)
+/nap-consistency-guide    /real-estate/nap-consistency-guide/    301
+/nap-check               /real-estate/                          301
+/what-is-nap-local-seo   /real-estate/what-is-nap/              301
+/nap-ai-search           /real-estate/nap-ai-search/            301

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Don't Like How ChatGPT Describes Me — Here's How to Change It | NAP Check</title>
+    <meta name="description" content="ChatGPT has wrong or outdated information about you? Here's how to take control of what AI says about your real estate business.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary-purple: #5B21B6; --primary-purple-light: #7C3AED; --secondary-teal: #0D9488; --text-primary: #1E1B4B; --text-secondary: #475569; --text-muted: #64748B; --bg-warm-white: #FAFAF9; --bg-subtle: #F5F3FF; --border-light: #E2E8F0; --white: #FFFFFF; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg-warm-white); color: var(--text-primary); line-height: 1.7; font-size: 18px; }
+        .header { background: var(--white); border-bottom: 1px solid var(--border-light); padding: 16px 24px; position: sticky; top: 0; z-index: 100; }
+        .header-content { max-width: 800px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--primary-purple), var(--secondary-teal)); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+        .logo-icon svg { width: 20px; height: 20px; color: white; }
+        .logo-text { font-size: 18px; font-weight: 700; color: var(--text-primary); }
+        .logo-text span { color: var(--primary-purple); }
+        .header-cta { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-light)); color: white; padding: 10px 20px; font-size: 14px; font-weight: 600; border-radius: 8px; text-decoration: none; }
+        article { max-width: 720px; margin: 0 auto; padding: 60px 24px 100px; }
+        .article-hero { text-align: center; margin-bottom: 48px; }
+        .article-category { display: inline-block; background: var(--bg-subtle); color: var(--primary-purple); padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 600; margin-bottom: 20px; }
+        h1 { font-size: 38px; font-weight: 700; line-height: 1.2; color: var(--text-primary); margin-bottom: 20px; }
+        .article-subtitle { font-size: 22px; color: var(--text-secondary); line-height: 1.5; }
+        .article-meta { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 24px; font-size: 14px; color: var(--text-muted); }
+        h2 { font-size: 28px; font-weight: 700; color: var(--text-primary); margin: 48px 0 20px; }
+        h3 { font-size: 22px; font-weight: 600; color: var(--text-primary); margin: 36px 0 16px; }
+        p { margin-bottom: 20px; color: var(--text-secondary); }
+        a { color: var(--primary-purple); text-decoration: underline; text-decoration-color: rgba(91, 33, 182, 0.3); }
+        .callout { background: var(--bg-subtle); border-left: 4px solid var(--primary-purple); padding: 24px 28px; margin: 32px 0; border-radius: 0 12px 12px 0; }
+        .callout p:last-child { margin-bottom: 0; }
+        ul, ol { margin: 20px 0 20px 24px; color: var(--text-secondary); }
+        li { margin-bottom: 12px; }
+        .analogy { background: var(--white); border: 2px solid var(--border-light); border-radius: 16px; padding: 28px; margin: 32px 0; }
+        .analogy-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; font-weight: 600; color: var(--primary-purple); }
+        .analogy p { margin-bottom: 0; }
+        .cta-box { background: linear-gradient(135deg, rgba(91, 33, 182, 0.05), rgba(13, 148, 136, 0.05)); border: 1px solid rgba(91, 33, 182, 0.15); border-radius: 16px; padding: 40px; text-align: center; margin: 48px 0; }
+        .cta-box h3 { margin-top: 0; color: var(--text-primary); }
+        .cta-button { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-light)); color: white; padding: 16px 32px; font-size: 17px; font-weight: 600; border-radius: 12px; text-decoration: none; box-shadow: 0 4px 15px rgba(91, 33, 182, 0.25); }
+        .cta-button:hover { color: white; }
+        .tldr { background: linear-gradient(135deg, rgba(13, 148, 136, 0.1), rgba(13, 148, 136, 0.05)); border: 1px solid rgba(13, 148, 136, 0.2); border-radius: 16px; padding: 28px; margin: 32px 0; }
+        .tldr-header { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--secondary-teal); margin-bottom: 12px; }
+        .tldr ul { margin: 0; }
+        .footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border-light); color: var(--text-muted); font-size: 14px; }
+        .footer a { color: var(--primary-purple); }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--text-muted); text-decoration: none; font-size: 14px; margin-bottom: 24px; }
+        .back-link:hover { color: var(--primary-purple); }
+        .scenario { background: var(--white); border: 1px solid var(--border-light); border-radius: 12px; padding: 24px; margin: 24px 0; }
+        .scenario-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 8px; }
+        .scenario-text { color: var(--text-primary); font-size: 17px; }
+        .step-box { background: var(--white); border: 1px solid var(--border-light); border-radius: 12px; padding: 24px; margin: 24px 0; }
+        .step-number { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: linear-gradient(135deg, var(--primary-purple), var(--secondary-teal)); color: white; border-radius: 50%; font-size: 14px; font-weight: 600; margin-right: 12px; }
+        .step-title { font-weight: 600; color: var(--text-primary); font-size: 18px; margin-bottom: 12px; }
+        @media (max-width: 600px) { h1 { font-size: 30px; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="/real-estate/" class="logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                </div>
+                <span class="logo-text">NAP<span>Check</span></span>
+            </a>
+            <a href="/real-estate/" class="header-cta">Free NAP Audit</a>
+        </div>
+    </header>
+
+    <article>
+        <a href="/real-estate/nap-consistency-guide/" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>
+            Back to the Complete NAP Guide
+        </a>
+
+        <div class="article-hero">
+            <span class="article-category">Take Control</span>
+            <h1>I Don't Like How ChatGPT Describes Me — Here's How to Change It</h1>
+            <p class="article-subtitle">When you asked ChatGPT about yourself, the answer was... not great. Here's why that happens and what you can do about it.</p>
+            <div class="article-meta">
+                <span>8 min read</span>
+            </div>
+        </div>
+
+        <div class="tldr">
+            <div class="tldr-header">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+                Quick answer
+            </div>
+            <ul>
+                <li>ChatGPT describes you based on what it learned from the web</li>
+                <li>If directories have old or wrong info, ChatGPT will repeat it</li>
+                <li>You control this by controlling your online presence—especially NAP data</li>
+                <li>Update directories + improve your bio content = better AI descriptions</li>
+            </ul>
+        </div>
+
+        <p>You did the thing everyone tells you not to do. You Googled yourself.</p>
+
+        <p>Except you didn't Google yourself. You ChatGPT'd yourself.</p>
+
+        <p>You typed: "Tell me about [your name], real estate agent in [your city]."</p>
+
+        <p>And the answer was... wrong. Or outdated. Or weirdly generic. Or missing the things that actually make you great at your job.</p>
+
+        <p>Maybe it said you specialize in something you haven't done in years. Maybe it mentioned your old brokerage. Maybe it called you "an agent" when you've been a broker for a decade.</p>
+
+        <p>Or maybe—and this is the really frustrating one—it described you like you're just another generic realtor, when you've got 20 years of experience and a specialty that sets you apart.</p>
+
+        <p>Take a deep breath. This is fixable.</p>
+
+        <h2>Why ChatGPT gets it wrong</h2>
+
+        <p>ChatGPT doesn't have a special file about you. It doesn't know you personally. Everything it "knows" came from text on the internet that it read during training.</p>
+
+        <div class="analogy">
+            <div class="analogy-header">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>
+                Think of ChatGPT as an incredibly well-read person with imperfect memory
+            </div>
+            <p>Imagine someone read every directory listing, review, and website about you—but read them months ago, and some of the sources were outdated even then. When they try to describe you now, they're working from fuzzy, potentially stale information. That's ChatGPT.</p>
+        </div>
+
+        <p>So if ChatGPT gets you wrong, it's because:</p>
+
+        <ol>
+            <li><strong>The sources were wrong.</strong> Old directories, outdated bios, previous brokerage info that never got cleaned up.</li>
+            <li><strong>The sources were sparse.</strong> Not enough content about you online for AI to understand what makes you unique.</li>
+            <li><strong>The sources were generic.</strong> Your bio says "experienced agent who cares about clients" just like every other bio. AI has nothing distinctive to latch onto.</li>
+        </ol>
+
+        <h2>What you can (and can't) control</h2>
+
+        <p><strong>What you CAN'T do:</strong> Email OpenAI and ask them to update your profile. ChatGPT doesn't work that way. There's no "edit my listing" button.</p>
+
+        <p><strong>What you CAN do:</strong> Control what's on the web about you, so that when AI models are updated (which happens periodically), they learn the right things.</p>
+
+        <p>This is a two-part fix:</p>
+
+        <ol>
+            <li><strong>NAP consistency</strong> — Make sure your basic business info is correct everywhere</li>
+            <li><strong>Bio optimization</strong> — Make sure your professional descriptions are distinctive and up-to-date</li>
+        </ol>
+
+        <h2>Part 1: Fix your NAP (the foundation)</h2>
+
+        <p>Before you worry about how you're described, make sure AI even knows who you are correctly.</p>
+
+        <div class="step-box">
+            <div class="step-title"><span class="step-number">1</span>Audit your directory listings</div>
+            <p>Check the 7 directories AI trusts most: Google Business, Zillow, Realtor.com, Redfin, Yelp, Facebook, BBB. Look for:</p>
+            <ul style="margin-bottom: 0;">
+                <li>Wrong or old addresses</li>
+                <li>Incorrect phone numbers</li>
+                <li>Name variations (Inc, LLC, etc.)</li>
+                <li>Old brokerage affiliations</li>
+                <li>"Retired" or "inactive" flags</li>
+            </ul>
+        </div>
+
+        <div class="step-box">
+            <div class="step-title"><span class="step-number">2</span>Standardize everything</div>
+            <p>Choose your canonical NAP—exactly how your info should appear—and make every directory match. Same name format. Same address. Same phone number. Copy-paste, don't retype.</p>
+        </div>
+
+        <div class="step-box">
+            <div class="step-title"><span class="step-number">3</span>Remove duplicate or outdated listings</div>
+            <p>Search for old versions of yourself: previous brokerages, old office addresses, listings you forgot about. Request removal or update them.</p>
+        </div>
+
+        <h2>Part 2: Optimize your bio (the differentiator)</h2>
+
+        <p>Once your NAP is solid, the next question is: what do those directories actually say about you?</p>
+
+        <p>Most agent bios are painfully generic:</p>
+
+        <div class="scenario">
+            <div class="scenario-label">Generic bio (what AI learns)</div>
+            <div class="scenario-text">"Jane is a dedicated real estate professional committed to providing exceptional service to her clients. She has been in the industry for 10 years and loves helping people find their dream homes."</div>
+        </div>
+
+        <p>There's nothing wrong with this. There's also nothing distinctive. AI reads this and thinks: "So... she's like every other agent."</p>
+
+        <p>Compare that to:</p>
+
+        <div class="scenario">
+            <div class="scenario-label">Specific bio (what AI learns)</div>
+            <div class="scenario-text">"Jane specializes in helping first-time homebuyers navigate Austin's competitive East Side market. She's closed 47 deals in 78704 and 78702 zip codes since 2019, with an average of 2.3% under asking price for her buyer clients. She speaks Spanish fluently and works extensively with relocation clients from the tech industry."</div>
+        </div>
+
+        <p>Now AI has something to work with. When someone asks "Who's a good agent for first-time buyers in East Austin?", there's a much better chance Jane comes up.</p>
+
+        <h3>What makes a bio AI-friendly?</h3>
+
+        <ul>
+            <li><strong>Specific geography</strong> — Neighborhoods, zip codes, cities you focus on</li>
+            <li><strong>Specific client types</strong> — First-time buyers, investors, relocations, luxury, etc.</li>
+            <li><strong>Specific numbers</strong> — Years of experience, deals closed, average sale price</li>
+            <li><strong>Specific differentiators</strong> — Languages, certifications, specialties</li>
+            <li><strong>Current information</strong> — Updated within the last year</li>
+        </ul>
+
+        <h2>Where to update your bio</h2>
+
+        <p>Focus on the same directories where AI looks for business info:</p>
+
+        <ol>
+            <li><strong>Google Business Profile</strong> — Your business description</li>
+            <li><strong>Zillow agent profile</strong> — This is often the richest source of agent info for AI</li>
+            <li><strong>Realtor.com profile</strong></li>
+            <li><strong>Your brokerage website</strong></li>
+            <li><strong>Your personal website</strong> (if you have one)</li>
+            <li><strong>LinkedIn</strong> — Yes, AI reads LinkedIn too</li>
+        </ol>
+
+        <p>Make all these descriptions consistent in theme, but not identical in wording. Use the same key facts, but phrase them differently for each platform.</p>
+
+        <h2>How long until ChatGPT updates?</h2>
+
+        <p>Here's the frustrating part: you can fix everything today, but ChatGPT won't immediately reflect those changes.</p>
+
+        <p>AI models are trained periodically, not continuously. The version of ChatGPT you're using today was trained on data from months ago. Your updates will be reflected in future versions—but there's no specific timeline.</p>
+
+        <p>However:</p>
+
+        <ul>
+            <li><strong>ChatGPT with web browsing</strong> can pull more current info</li>
+            <li><strong>Perplexity and similar AI tools</strong> search the web in real-time</li>
+            <li><strong>Future AI updates</strong> will include your corrected information</li>
+        </ul>
+
+        <p>The point is to fix it now so you're positioned correctly going forward.</p>
+
+        <div class="cta-box">
+            <h3>Start with your NAP</h3>
+            <p>Before optimizing your bio, make sure AI even has your basic info right. Our free NAP Check tool audits the directories that matter most.</p>
+            <a href="/real-estate/" class="cta-button">
+                Check My NAP (Free)
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+            </a>
+        </div>
+
+        <div class="callout">
+            <p><strong>Want help with the bio part?</strong> Our <a href="https://askandbefound.com">Bio Generator tool</a> creates AI-optimized professional bios that give AI the specific, distinctive information it needs to describe you correctly.</p>
+        </div>
+
+        <p style="margin-top: 48px;"><strong>Related reading:</strong></p>
+        <ul>
+            <li><a href="/real-estate/not-showing-chatgpt/">Why Am I Not Showing Up in ChatGPT?</a></li>
+            <li><a href="/real-estate/nap-ai-search/">How AI Uses Your Business Data</a></li>
+            <li><a href="/real-estate/common-nap-mistakes/">Common NAP Mistakes to Avoid</a></li>
+        </ul>
+    </article>
+
+    <footer class="footer">
+        <p>A product of <a href="https://askandbefound.com">Ask and Be Found</a> · Helping businesses get discovered by AI</p>
+    </footer>
+</body>
+</html>

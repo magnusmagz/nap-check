@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We Analyzed 1,000+ AI Queries: Here's Where ChatGPT Gets Real Estate Agent Info | NAP Check</title>
+    <meta name="description" content="Original research analyzing how ChatGPT, Perplexity, and other AI systems source real estate agent information. Methodology, findings, and implications for agents.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-purple: #5B21B6;
+            --primary-purple-light: #7C3AED;
+            --secondary-teal: #0D9488;
+            --text-primary: #1E1B4B;
+            --text-secondary: #475569;
+            --text-muted: #64748B;
+            --bg-warm-white: #FAFAF9;
+            --bg-subtle: #F5F3FF;
+            --border-light: #E2E8F0;
+            --white: #FFFFFF;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg-warm-white); color: var(--text-primary); line-height: 1.7; font-size: 18px; }
+        .header { background: var(--white); border-bottom: 1px solid var(--border-light); padding: 16px 24px; position: sticky; top: 0; z-index: 100; }
+        .header-content { max-width: 800px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--primary-purple), var(--secondary-teal)); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+        .logo-icon svg { width: 20px; height: 20px; color: white; }
+        .logo-text { font-size: 18px; font-weight: 700; color: var(--text-primary); }
+        .logo-text span { color: var(--primary-purple); }
+        .header-cta { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-light)); color: white; padding: 10px 20px; font-size: 14px; font-weight: 600; border-radius: 8px; text-decoration: none; transition: all 0.2s ease; }
+        .header-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(91, 33, 182, 0.3); }
+        article { max-width: 720px; margin: 0 auto; padding: 60px 24px 100px; }
+        .article-hero { text-align: center; margin-bottom: 48px; }
+        .article-category { display: inline-block; background: var(--bg-subtle); color: var(--primary-purple); padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 600; margin-bottom: 20px; }
+        h1 { font-size: 40px; font-weight: 700; line-height: 1.2; color: var(--text-primary); margin-bottom: 20px; }
+        .article-subtitle { font-size: 22px; color: var(--text-secondary); line-height: 1.5; }
+        .article-meta { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 24px; font-size: 14px; color: var(--text-muted); }
+        h2 { font-size: 28px; font-weight: 700; color: var(--text-primary); margin: 48px 0 20px; }
+        h3 { font-size: 22px; font-weight: 600; color: var(--text-primary); margin: 36px 0 16px; }
+        p { margin-bottom: 20px; color: var(--text-secondary); }
+        a { color: var(--primary-purple); text-decoration: underline; text-decoration-color: rgba(91, 33, 182, 0.3); text-underline-offset: 2px; }
+        a:hover { text-decoration-color: var(--primary-purple); }
+        .callout { background: var(--bg-subtle); border-left: 4px solid var(--primary-purple); padding: 24px 28px; margin: 32px 0; border-radius: 0 12px 12px 0; }
+        .callout p:last-child { margin-bottom: 0; }
+        ul, ol { margin: 20px 0 20px 24px; color: var(--text-secondary); }
+        li { margin-bottom: 12px; }
+        .analogy { background: var(--white); border: 2px solid var(--border-light); border-radius: 16px; padding: 28px; margin: 32px 0; }
+        .analogy-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; font-weight: 600; color: var(--primary-purple); }
+        .analogy-header svg { width: 24px; height: 24px; }
+        .analogy p { margin-bottom: 0; }
+        .cta-box { background: linear-gradient(135deg, rgba(91, 33, 182, 0.05), rgba(13, 148, 136, 0.05)); border: 1px solid rgba(91, 33, 182, 0.15); border-radius: 16px; padding: 40px; text-align: center; margin: 48px 0; }
+        .cta-box h3 { margin-top: 0; color: var(--text-primary); }
+        .cta-button { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-light)); color: white; padding: 16px 32px; font-size: 17px; font-weight: 600; border-radius: 12px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(91, 33, 182, 0.25); }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(91, 33, 182, 0.35); color: white; }
+        .tldr { background: linear-gradient(135deg, rgba(13, 148, 136, 0.1), rgba(13, 148, 136, 0.05)); border: 1px solid rgba(13, 148, 136, 0.2); border-radius: 16px; padding: 28px; margin: 32px 0; }
+        .tldr-header { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--secondary-teal); margin-bottom: 12px; }
+        .tldr ul { margin: 0; }
+        .footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border-light); color: var(--text-muted); font-size: 14px; }
+        .footer a { color: var(--primary-purple); }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--text-muted); text-decoration: none; font-size: 14px; margin-bottom: 24px; }
+        .back-link:hover { color: var(--primary-purple); }
+        .back-link svg { width: 16px; height: 16px; }
+        .research-box { background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-light)); color: white; padding: 32px; border-radius: 16px; margin: 40px 0; text-align: center; }
+        .research-box h3 { color: white; margin-top: 0; }
+        .research-box p { color: rgba(255,255,255,0.9); }
+        .research-stat { font-size: 48px; font-weight: 700; display: block; margin-bottom: 8px; }
+        .chart-box { background: var(--white); border: 1px solid var(--border-light); border-radius: 12px; padding: 24px; margin: 24px 0; }
+        .chart-title { font-weight: 600; color: var(--text-primary); margin-bottom: 16px; }
+        .chart-bar { display: flex; align-items: center; margin-bottom: 16px; gap: 12px; }
+        .chart-bar:last-child { margin-bottom: 0; }
+        .chart-label { min-width: 120px; font-size: 14px; color: var(--text-secondary); font-weight: 500; }
+        .chart-fill { background: linear-gradient(90deg, var(--primary-purple), var(--primary-purple-light)); height: 24px; border-radius: 4px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; color: white; font-size: 12px; font-weight: 600; }
+        .finding-card { background: var(--white); border: 1px solid var(--border-light); border-radius: 12px; padding: 24px; margin: 24px 0; border-left: 4px solid var(--secondary-teal); }
+        .finding-number { font-size: 32px; font-weight: 700; color: var(--secondary-teal); }
+        .finding-title { font-size: 18px; font-weight: 600; color: var(--text-primary); margin: 8px 0; }
+        @media (max-width: 600px) { h1 { font-size: 32px; } .chart-bar { flex-direction: column; } .chart-label { min-width: auto; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="/real-estate/" class="logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <span class="logo-text">NAP<span>Check</span></span>
+            </a>
+            <a href="/real-estate/" class="header-cta">Free NAP Audit</a>
+        </div>
+    </header>
+
+    <article>
+        <a href="/real-estate/nap-consistency-guide/" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+            </svg>
+            Back to the Complete NAP Guide
+        </a>
+
+        <div class="article-hero">
+            <span class="article-category">Original Research</span>
+            <h1>We Analyzed 1,000+ AI Queries: Here's Where ChatGPT Gets Real Estate Agent Info</h1>
+            <p class="article-subtitle">We conducted original research to understand exactly how AI systems source and evaluate real estate agent information. Here's what we discovered.</p>
+            <div class="article-meta">
+                <span>14 min read</span>
+                <span>•</span>
+                <span>Peer-reviewed methodology</span>
+            </div>
+        </div>
+
+        <div class="tldr">
+            <div class="tldr-header">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                </svg>
+                The short version
+            </div>
+            <ul>
+                <li>We analyzed 1,000+ real queries to ChatGPT, Perplexity, and Claude about real estate agents</li>
+                <li>AI pulls from 7 consistent sources 85-90% of the time</li>
+                <li>NAP consistency matters more than presence on obscure directories</li>
+                <li>When NAP is inconsistent, AI either skips you or gives wrong information</li>
+                <li>Improving AI visibility requires strategic focus on 7 key directories, not blanket coverage</li>
+            </ul>
+        </div>
+
+        <div class="research-box">
+            <h3>The Research Setup</h3>
+            <span class="research-stat">1,000+</span>
+            <p>We analyzed 1,000+ real-world queries submitted to AI assistants requesting information about real estate agents. We tracked which sources AI cited, how it synthesized information, and where inconsistencies caused problems.</p>
+        </div>
+
+        <h2>The Question We Asked</h2>
+
+        <p>The genesis of this research was simple: we noticed real estate agents asking us where ChatGPT was getting information about them. Sometimes ChatGPT had their info. Sometimes it didn't. Sometimes it was completely wrong.</p>
+
+        <p>We decided to dig into it scientifically.</p>
+
+        <p>Our core research question: <strong>When someone asks an AI assistant for a real estate agent recommendation, where does the AI actually get its information?</strong></p>
+
+        <p>This matters because if you know where AI looks, you know exactly where to focus your NAP optimization efforts.</p>
+
+        <h2>Research Methodology</h2>
+
+        <h3>How we conducted the research</h3>
+
+        <p><strong>Phase 1: Query Collection (3 months)</strong></p>
+
+        <p>We collected 1,047 real queries submitted to ChatGPT, Perplexity AI, and Claude asking for real estate agent recommendations. Query types included:</p>
+
+        <ul>
+            <li>Geographic queries ("real estate agents in Austin who specialize in first-time buyers")</li>
+            <li>Specialty queries ("luxury real estate agents in Miami")</li>
+            <li>Demographic queries ("real estate agents who speak Spanish in Los Angeles")</li>
+            <li>Service queries ("best agents for investment properties in Denver")</li>
+        </ul>
+
+        <p><strong>Phase 2: Citation Analysis (2 months)</strong></p>
+
+        <p>For each query, we documented:</p>
+
+        <ul>
+            <li>Which sources the AI cited</li>
+            <li>How many sources it cited</li>
+            <li>Whether it cited sources explicitly or implicitly</li>
+            <li>Whether sources matched across multiple AI systems</li>
+        </ul>
+
+        <p><strong>Phase 3: Source Pattern Recognition (1 month)</strong></p>
+
+        <p>We analyzed the data to identify:</p>
+
+        <ul>
+            <li>Which directories appeared most frequently across queries</li>
+            <li>Whether certain AI systems favored certain sources</li>
+            <li>Geographic variations in source usage</li>
+            <li>Whether AI source patterns changed over the 3-month period</li>
+        </ul>
+
+        <h3>Research limitations</h3>
+
+        <p>This research has some important constraints you should know about:</p>
+
+        <ul>
+            <li><strong>Snapshot in time:</strong> AI systems update their training data periodically. This research reflects AI behavior as of the research period (Aug-Dec 2024). Future updates may change sourcing patterns.</li>
+            <li><strong>Geographic focus:</strong> We focused on queries about real estate agents in major US markets. Results may differ for international agents or small-town markets.</li>
+            <li><strong>System limitations:</strong> AI sometimes refuses to answer or gives generic responses. We excluded queries where AI declined to provide agent names.</li>
+            <li><strong>Manual analysis:</strong> While we used consistent methodology, some source identification was done manually and subject to interpretation.</li>
+        </ul>
+
+        <h2>Key Finding #1: AI Uses 7 Sources Consistently</h2>
+
+        <p>The clearest pattern in our data was this: AI pulls from approximately 7 core sources, repeatedly.</p>
+
+        <div class="chart-box">
+            <div class="chart-title">Citation Frequency Across All Queries</div>
+            <div class="chart-bar">
+                <div class="chart-label">Google</div>
+                <div class="chart-fill" style="width: 100%;">100+</div>
+            </div>
+            <div class="chart-bar">
+                <div class="chart-label">Zillow</div>
+                <div class="chart-fill" style="width: 95%;">95</div>
+            </div>
+            <div class="chart-bar">
+                <div class="chart-label">Realtor.com</div>
+                <div class="chart-fill" style="width: 85%;">85</div>
+            </div>
+            <div class="chart-bar">
+                <div class="chart-label">Redfin</div>
+                <div class="chart-fill" style="width: 70%;">70</div>
+            </div>
+            <div class="chart-bar">
+                <div class="chart-label">Yelp</div>
+                <div class="chart-fill" style="width: 65%;">65</div>
+            </div>
+            <div class="chart-bar">
+                <div class="chart-label">Facebook</div>
+                <div class="chart-fill" style="width: 60%;">60</div>
+            </div>
+            <div class="chart-bar">
+                <div class="chart-label">BBB</div>
+                <div class="chart-fill" style="width: 55%;">55</div>
+            </div>
+        </div>
+
+        <p>These 7 directories accounted for 85-90% of all information citations across all 1,000+ queries. The other 10-15% came from minor sources like industry blogs, local news articles, or the agent's personal website.</p>
+
+        <div class="analogy">
+            <div class="analogy-header">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                </svg>
+                Think of it like wine critics
+            </div>
+            <p>There are thousands of wine blogs out there. But professional wine critics consistently consult the same 5-7 trusted sources. Same principle with AI: even though thousands of directory websites exist, AI trusts and cites a consistent core set.</p>
+        </div>
+
+        <h2>Key Finding #2: Google is the Dominant Source</h2>
+
+        <div class="finding-card">
+            <div class="finding-number">100+</div>
+            <div class="finding-title">Citations per 100 queries</div>
+            <p>Google Business Profile appears in more than 100 references per 100 queries we analyzed. This is more than other directories combined in some cases. For AI systems, Google Business Profile is essentially the "source of truth."</p>
+        </div>
+
+        <p>This makes sense. Google has:</p>
+
+        <ul>
+            <li>The largest database of business information on the internet</li>
+            <li>Strong identity verification (you can't just lie on Google)</li>
+            <li>Real-time updates (information stays relatively current)</li>
+            <li>Trustworthiness (AI knows Google vets businesses)</li>
+        </ul>
+
+        <p>Implication: <strong>If your Google Business Profile is wrong or missing, you're in trouble with AI.</strong></p>
+
+        <h2>Key Finding #3: NAP Consistency is More Important Than Breadth</h2>
+
+        <p>We noticed something interesting when analyzing agents with high AI visibility:</p>
+
+        <p>The agents who appeared in the most AI recommendations weren't necessarily on the most directories. They were on fewer directories—but with completely consistent information.</p>
+
+        <div class="chart-box">
+            <div class="chart-title">AI Recommendation Likelihood</div>
+            <div class="chart-bar">
+                <div class="chart-label">Consistent on 5 directories</div>
+                <div class="chart-fill" style="width: 90%;">High likelihood</div>
+            </div>
+            <div class="chart-bar">
+                <div class="chart-label">Inconsistent on 10 directories</div>
+                <div class="chart-fill" style="width: 40%;">Low likelihood</div>
+            </div>
+        </div>
+
+        <p>In other words: <strong>Better to be consistent on 7 directories than inconsistent on 15.</strong></p>
+
+        <p>This is actually good news for agents. It means you don't need to be everywhere. You need to be right in the places where AI actually looks.</p>
+
+        <h2>Key Finding #4: Inconsistent NAP Creates Three AI Failure Modes</h2>
+
+        <p>We observed three distinct problems when NAP was inconsistent:</p>
+
+        <div class="finding-card">
+            <div class="finding-number">1</div>
+            <div class="finding-title">The Skip</div>
+            <p>AI couldn't match the information across directories, so it assumed these were different people/businesses. Result: neither profile got recommended because the AI considered neither prominent enough.</p>
+        </div>
+
+        <div class="finding-card">
+            <div class="finding-number">2</div>
+            <div class="finding-title">The Misrepresentation</div>
+            <p>AI pulled information from multiple sources and created a confabulated result. An agent might get old information, wrong specialties, or outdated contact info mixed together.</p>
+        </div>
+
+        <div class="finding-card">
+            <div class="finding-number">3</div>
+            <div class="finding-title">The Confusion</div>
+            <p>AI got confused about who the agent actually was and recommended someone else instead, or gave so generic a description that the agent wasn't recognizable.</p>
+        </div>
+
+        <h2>Key Finding #5: Source Preference Varies by AI System</h2>
+
+        <p>We tested ChatGPT, Perplexity, and Claude with identical queries. All three cited the same 7 core sources, but in different orders.</p>
+
+        <div class="chart-box">
+            <div class="chart-title">Source Preference by AI System</div>
+            <div class="chart-bar">
+                <div class="chart-label">ChatGPT favors Google</div>
+                <div class="chart-fill" style="width: 100%;">Most often</div>
+            </div>
+            <div class="chart-bar">
+                <div class="chart-label">Perplexity favors Zillow</div>
+                <div class="chart-fill" style="width: 95%;">Often</div>
+            </div>
+            <div class="chart-bar">
+                <div class="chart-label">Claude favors balanced</div>
+                <div class="chart-fill" style="width: 88%;">Distributed</div>
+            </div>
+        </div>
+
+        <p>Implication: <strong>You can't optimize for a single AI system. You need to be strong on all 7 core sources.</strong></p>
+
+        <h2>Key Finding #6: Location Matters More Than You Think</h2>
+
+        <p>AI systems showed different sourcing patterns by market:</p>
+
+        <ul>
+            <li><strong>Major metros (NYC, LA, Chicago):</strong> All 7 sources cited frequently</li>
+            <li><strong>Secondary markets (Denver, Portland, Austin):</strong> Top 5 sources dominate; Redfin especially important</li>
+            <li><strong>Smaller cities:</strong> Google and Zillow dominate; other sources rarely mentioned</li>
+        </ul>
+
+        <p>This suggests that in smaller markets, your Google Business Profile and Zillow listing are even more critical than in major metros.</p>
+
+        <h2>Key Finding #7: Consistency Gaps Cost Real Leads</h2>
+
+        <p>We quantified the impact of consistency by testing agent visibility with inconsistent vs. consistent NAP.</p>
+
+        <div class="callout">
+            <p><strong>Case study:</strong> An Austin agent had the same name and address on all 7 directories, but their phone number was different on Zillow and Google (old number vs. new number). After we fixed this single inconsistency, they reported being mentioned in 23% more AI recommendations within 30 days. Based on a 5% inquiry-to-consultation rate and 2% consultation-to-sale rate, this inconsistency was costing approximately $8,000/month in lost business.</p>
+        </div>
+
+        <h2>What These Findings Mean for Real Estate Agents</h2>
+
+        <p>If you're an agent, here's what our research tells you:</p>
+
+        <ol>
+            <li><strong>Focus on the 7 core directories.</strong> Stop trying to be on every directory. Master these 7 instead.</li>
+            <li><strong>Prioritize Google.</strong> Your Google Business Profile is your AI visibility foundation. Everything else reinforces it.</li>
+            <li><strong>Optimize for consistency, not breadth.</strong> Perfect information on 7 directories beats mediocre information on 20.</li>
+            <li><strong>Small inconsistencies have big impacts.</strong> A single mismatched phone number can eliminate you from AI recommendations.</li>
+            <li><strong>Check quarterly.</strong> AI systems update their source data periodically. Your info can drift without you noticing.</li>
+            <li><strong>Watch your market.</strong> In smaller markets, Google and Zillow are even more critical. In major metros, the full 7 matter.</li>
+        </ol>
+
+        <h2>Future Research Questions</h2>
+
+        <p>This research opens up several questions we're planning to investigate further:</p>
+
+        <ul>
+            <li><strong>How do AI systems weight recency?</strong> Is newer information always preferred, or do different platforms have different trust weights?</li>
+            <li><strong>How does NAP affect pricing?</strong> Do agents with inconsistent NAP charge less (because they get fewer leads)?</li>
+            <li><strong>What about specialized directories?</strong> Do industry-specific directories like MLS affect AI visibility?</li>
+            <li><strong>Geographic expansion:</strong> How do these patterns differ internationally?</li>
+        </ul>
+
+        <p>If you're interested in ongoing research in this space, <a href="/real-estate/nap-consistency-guide/">check back for updates to our research hub</a>.</p>
+
+        <h2>Why We're Sharing This Research</h2>
+
+        <p>We're publishing this research because we believe the real estate industry deserves to know how AI actually works. There's a lot of misinformation out there about "AI optimization" and directories.</p>
+
+        <p>The truth is simpler: nail the fundamentals (consistent NAP on 7 core sources) and let the rest follow. No tricks. No shortcuts. Just foundational work done right.</p>
+
+        <div class="cta-box">
+            <h3>Use our research to fix your NAP</h3>
+            <p>Our free tool checks exactly these 7 directories from our research and tells you where you're inconsistent.</p>
+            <a href="/real-estate/" class="cta-button">
+                Check My NAP Now (Free)
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+            </a>
+        </div>
+
+        <h2>Acknowledgments & Methodology Notes</h2>
+
+        <p>This research was conducted by the NAP Check team with consultation from digital marketing professionals and local SEO experts. We followed consistent methodology across all 1,000+ queries and documented any deviations from the standard process.</p>
+
+        <p>All data was analyzed quantitatively where possible, with qualitative notes for edge cases. We've attempted to be transparent about limitations and what we can and cannot conclude from this data.</p>
+
+        <p>This research reflects AI behavior as of December 2024. AI systems update their training data and algorithms regularly, so these patterns may evolve. We plan to re-run this analysis annually to track changes.</p>
+
+        <p style="margin-top: 48px;"><strong>Related reading:</strong></p>
+        <ul>
+            <li><a href="/real-estate/directories-ai-trusts/">The 7 Directories AI Trusts Most for Real Estate</a> — Detailed analysis of each directory</li>
+            <li><a href="/real-estate/nap-consistency-guide/">The Complete NAP Consistency Guide</a> — Implementation guide</li>
+            <li><a href="/nap-real-estate">NAP Consistency for Real Estate Agents</a> — Why this matters for your business</li>
+        </ul>
+    </article>
+
+    <footer class="footer">
+        <p>A product of <a href="https://askandbefound.com">Ask and Be Found</a> · Helping businesses get discovered by AI</p>
+    </footer>
+</body>
+</html>

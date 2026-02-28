@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Fix NAP Inconsistencies Across Your Listings | NAP Check</title>
+    <meta name="description" content="A step-by-step guide to finding, claiming, and fixing NAP inconsistencies on all the major real estate directories.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-purple: #5B21B6;
+            --primary-purple-light: #7C3AED;
+            --secondary-teal: #0D9488;
+            --text-primary: #1E1B4B;
+            --text-secondary: #475569;
+            --text-muted: #64748B;
+            --bg-warm-white: #FAFAF9;
+            --bg-subtle: #F5F3FF;
+            --border-light: #E2E8F0;
+            --white: #FFFFFF;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg-warm-white); color: var(--text-primary); line-height: 1.7; font-size: 18px; }
+        .header { background: var(--white); border-bottom: 1px solid var(--border-light); padding: 16px 24px; position: sticky; top: 0; z-index: 100; }
+        .header-content { max-width: 800px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--primary-purple), var(--secondary-teal)); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+        .logo-icon svg { width: 20px; height: 20px; color: white; }
+        .logo-text { font-size: 18px; font-weight: 700; color: var(--text-primary); }
+        .logo-text span { color: var(--primary-purple); }
+        .header-cta { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-light)); color: white; padding: 10px 20px; font-size: 14px; font-weight: 600; border-radius: 8px; text-decoration: none; transition: all 0.2s ease; }
+        .header-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(91, 33, 182, 0.3); }
+        article { max-width: 720px; margin: 0 auto; padding: 60px 24px 100px; }
+        .article-hero { text-align: center; margin-bottom: 48px; }
+        .article-category { display: inline-block; background: var(--bg-subtle); color: var(--primary-purple); padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 600; margin-bottom: 20px; }
+        h1 { font-size: 42px; font-weight: 700; line-height: 1.2; color: var(--text-primary); margin-bottom: 20px; }
+        .article-subtitle { font-size: 22px; color: var(--text-secondary); line-height: 1.5; }
+        .article-meta { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 24px; font-size: 14px; color: var(--text-muted); }
+        h2 { font-size: 28px; font-weight: 700; color: var(--text-primary); margin: 48px 0 20px; }
+        h3 { font-size: 22px; font-weight: 600; color: var(--text-primary); margin: 36px 0 16px; }
+        p { margin-bottom: 20px; color: var(--text-secondary); }
+        a { color: var(--primary-purple); text-decoration: underline; text-decoration-color: rgba(91, 33, 182, 0.3); text-underline-offset: 2px; }
+        a:hover { text-decoration-color: var(--primary-purple); }
+        .callout { background: var(--bg-subtle); border-left: 4px solid var(--primary-purple); padding: 24px 28px; margin: 32px 0; border-radius: 0 12px 12px 0; }
+        .callout p:last-child { margin-bottom: 0; }
+        ul, ol { margin: 20px 0 20px 24px; color: var(--text-secondary); }
+        li { margin-bottom: 12px; }
+        .analogy { background: var(--white); border: 2px solid var(--border-light); border-radius: 16px; padding: 28px; margin: 32px 0; }
+        .analogy-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; font-weight: 600; color: var(--primary-purple); }
+        .analogy-header svg { width: 24px; height: 24px; }
+        .analogy p { margin-bottom: 0; }
+        .cta-box { background: linear-gradient(135deg, rgba(91, 33, 182, 0.05), rgba(13, 148, 136, 0.05)); border: 1px solid rgba(91, 33, 182, 0.15); border-radius: 16px; padding: 40px; text-align: center; margin: 48px 0; }
+        .cta-box h3 { margin-top: 0; color: var(--text-primary); }
+        .cta-button { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-light)); color: white; padding: 16px 32px; font-size: 17px; font-weight: 600; border-radius: 12px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(91, 33, 182, 0.25); }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(91, 33, 182, 0.35); color: white; }
+        .tldr { background: linear-gradient(135deg, rgba(13, 148, 136, 0.1), rgba(13, 148, 136, 0.05)); border: 1px solid rgba(13, 148, 136, 0.2); border-radius: 16px; padding: 28px; margin: 32px 0; }
+        .tldr-header { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--secondary-teal); margin-bottom: 12px; }
+        .tldr ul { margin: 0; }
+        .footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border-light); color: var(--text-muted); font-size: 14px; }
+        .footer a { color: var(--primary-purple); }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--text-muted); text-decoration: none; font-size: 14px; margin-bottom: 24px; }
+        .back-link:hover { color: var(--primary-purple); }
+        .back-link svg { width: 16px; height: 16px; }
+        .step-card { background: var(--white); border: 1px solid var(--border-light); border-radius: 12px; padding: 28px; margin: 28px 0; }
+        .step-number { display: inline-block; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-light)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 24px; }
+        .step-title { font-size: 20px; font-weight: 600; color: var(--text-primary); margin: 16px 0; }
+        .directory-steps { background: var(--bg-subtle); border-left: 4px solid var(--secondary-teal); padding: 20px; border-radius: 0 12px 12px 0; margin: 20px 0; }
+        .directory-name { font-weight: 600; color: var(--secondary-teal); margin-bottom: 12px; }
+        .directory-steps ol { margin: 0 0 0 24px; }
+        .checklist { background: var(--white); border: 1px solid var(--border-light); border-radius: 12px; padding: 24px; margin: 24px 0; }
+        .checklist-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+        .checklist-item:last-child { margin-bottom: 0; }
+        .checklist-checkbox { width: 20px; height: 20px; border: 2px solid var(--primary-purple); border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
+        @media (max-width: 600px) { h1 { font-size: 32px; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="/real-estate/" class="logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <span class="logo-text">NAP<span>Check</span></span>
+            </a>
+            <a href="/real-estate/" class="header-cta">Free NAP Audit</a>
+        </div>
+    </header>
+
+    <article>
+        <a href="/real-estate/nap-consistency-guide/" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+            </svg>
+            Back to the Complete NAP Guide
+        </a>
+
+        <div class="article-hero">
+            <span class="article-category">How-To Guide</span>
+            <h1>How to Fix NAP Inconsistencies Across Your Listings</h1>
+            <p class="article-subtitle">A step-by-step guide to auditing, claiming, and fixing NAP data on the 7 directories that matter most.</p>
+            <div class="article-meta">
+                <span>11 min read</span>
+            </div>
+        </div>
+
+        <div class="tldr">
+            <div class="tldr-header">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                </svg>
+                The short version
+            </div>
+            <ul>
+                <li>Step 1: Define your canonical NAP (the "correct" version)</li>
+                <li>Step 2: Audit all 7 directories to find inconsistencies</li>
+                <li>Step 3: Claim or log into each account</li>
+                <li>Step 4: Update to match your canonical NAP</li>
+                <li>Step 5: Monitor quarterly to catch changes</li>
+            </ul>
+        </div>
+
+        <p>You know you have NAP inconsistencies. Maybe you found them using our free tool. Or you just searched yourself and saw different information in different places.</p>
+
+        <p>Now comes the fun part: fixing them.</p>
+
+        <p>Good news: this is straightforward work. Not quick, but straightforward. Budget 3-4 hours, and you can clean up your entire online presence.</p>
+
+        <p>Let's go through it step by step.</p>
+
+        <h2>Step 1: Define Your "Canonical NAP"</h2>
+
+        <p>Before you update anything, decide exactly how your information should appear everywhere. This is your "source of truth."</p>
+
+        <div class="step-card">
+            <p><strong>Your canonical NAP should include:</strong></p>
+
+            <div class="checklist">
+                <div class="checklist-item">
+                    <div class="checklist-checkbox"></div>
+                    <div><strong>Legal business name</strong> (or how your broker lists you)</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-checkbox"></div>
+                    <div><strong>Full address</strong> with complete abbreviations (Street, not St)</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-checkbox"></div>
+                    <div><strong>Primary phone number</strong> in one consistent format</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-checkbox"></div>
+                    <div><strong>Email address</strong> (business email preferred)</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-checkbox"></div>
+                    <div><strong>Website URL</strong> (your main website, not brokerage)</div>
+                </div>
+            </div>
+        </div>
+
+        <p>Write this down. Literally. Create a document with your canonical NAP and keep it open while you're making updates. You want to copy-paste your information, not retype it each time (which introduces typos).</p>
+
+        <h3>Example: Sarah Smith Realty</h3>
+
+        <div class="callout">
+            <p><strong>Canonical NAP:</strong><br>
+            Name: Sarah Smith Realty<br>
+            Address: 456 Pine Boulevard, Suite 200, Portland, OR 97214<br>
+            Phone: (503) 555-1234<br>
+            Email: sarah@sarahsmithrealty.com<br>
+            Website: sarahsmithrealty.com</p>
+        </div>
+
+        <p>Notice: "Boulevard" not "Blvd", complete suite number, full state abbreviation, consistent phone formatting.</p>
+
+        <h2>Step 2: Audit Current Listings</h2>
+
+        <p>Now search for yourself on each of the 7 key directories. Document what you find.</p>
+
+        <p>The easiest way is to create a simple spreadsheet with 7 rows (one for each directory) and columns for Name, Address, Phone.</p>
+
+        <p>Here are the links to search each directory:</p>
+
+        <div class="step-card">
+            <ol>
+                <li><strong>Google Business Profile</strong><br>
+                Search: Google search for your name + "Business Profile"<br>
+                Or: Visit google.com/business</li>
+                <li><strong>Zillow</strong><br>
+                Search: zillow.com → Find Agent → search your name</li>
+                <li><strong>Realtor.com</strong><br>
+                Search: realtor.com → Find Agent → search your name</li>
+                <li><strong>Redfin</strong><br>
+                Search: redfin.com → Find Agent → search your name</li>
+                <li><strong>Yelp</strong><br>
+                Search: yelp.com → search your business name</li>
+                <li><strong>Facebook</strong><br>
+                Search: facebook.com → search your business page name</li>
+                <li><strong>BBB</strong><br>
+                Search: bbb.org → search your name and location</li>
+            </ol>
+        </div>
+
+        <p>Document exactly what you find. If you can't find yourself on a platform, note that too—you might need to create a profile.</p>
+
+        <h2>Step 3: Claim or Log Into Each Account</h2>
+
+        <p>For each directory, you need to claim or access your account. The process varies by platform.</p>
+
+        <div class="directory-steps">
+            <div class="directory-name">Google Business Profile</div>
+            <ol>
+                <li>Go to google.com/business</li>
+                <li>Sign in with your Google account (create one if you don't have it)</li>
+                <li>Search for your business</li>
+                <li>Click "Claim this business" or "Manage this business"</li>
+                <li>Follow verification steps (usually phone call or postcard)</li>
+            </ol>
+        </div>
+
+        <div class="directory-steps">
+            <div class="directory-name">Zillow</div>
+            <ol>
+                <li>Go to zillow.com and search for yourself</li>
+                <li>Click your profile (or "Claim profile" if you haven't)</li>
+                <li>Create a Zillow account if you don't have one</li>
+                <li>Verify your identity and broker</li>
+            </ol>
+        </div>
+
+        <div class="directory-steps">
+            <div class="directory-name">Realtor.com</div>
+            <ol>
+                <li>Go to realtor.com and search for yourself</li>
+                <li>Click "Claim this profile" or "Manage profile"</li>
+                <li>Create account with your NAR member email</li>
+                <li>Verify NAR membership (required)</li>
+            </ol>
+        </div>
+
+        <div class="directory-steps">
+            <div class="directory-name">Redfin</div>
+            <ol>
+                <li>Go to redfin.com and search for yourself</li>
+                <li>If profile exists, click to access settings</li>
+                <li>Create account or claim agent profile</li>
+                <li>Verify with phone number</li>
+            </ol>
+        </div>
+
+        <div class="directory-steps">
+            <div class="directory-name">Yelp</div>
+            <ol>
+                <li>Go to yelp.com and search for your business</li>
+                <li>If listed, click "Claim this business"</li>
+                <li>Create Yelp account (use business email)</li>
+                <li>Verify ownership via email or phone</li>
+            </ol>
+        </div>
+
+        <div class="directory-steps">
+            <div class="directory-name">Facebook</div>
+            <ol>
+                <li>Go to facebook.com</li>
+                <li>Search for your business page name</li>
+                <li>Click "Add a Category" or access settings if you manage the page</li>
+                <li>If page doesn't exist, create new business page</li>
+                <li>Fill in all information accurately</li>
+            </ol>
+        </div>
+
+        <div class="directory-steps">
+            <div class="directory-name">BBB</div>
+            <ol>
+                <li>Go to bbb.org</li>
+                <li>Search for your business</li>
+                <li>If listed, click to see details</li>
+                <li>Look for "claim business" or contact BBB to update</li>
+                <li>Complete application for accreditation</li>
+            </ol>
+        </div>
+
+        <div class="analogy">
+            <div class="analogy-header">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                </svg>
+                Pro tip: Do Google first
+            </div>
+            <p>Google Business Profile is the foundation. Update it first, let it sync for 24 hours, then update everything else. Google is the "source of truth" that other directories often cross-reference.</p>
+        </div>
+
+        <h2>Step 4: Update Each Profile to Match Your Canonical NAP</h2>
+
+        <p>Once you're logged in, update each profile to match your canonical NAP exactly.</p>
+
+        <p><strong>Update in this order:</strong></p>
+
+        <ol>
+            <li>Google Business Profile (wait 24 hours)</li>
+            <li>Zillow</li>
+            <li>Realtor.com</li>
+            <li>Redfin</li>
+            <li>Yelp</li>
+            <li>Facebook</li>
+            <li>BBB</li>
+        </ol>
+
+        <h3>What to update on each</h3>
+
+        <div class="step-card">
+            <p><strong>Google Business Profile:</strong></p>
+            <ul>
+                <li>Business name</li>
+                <li>Address (exact format)</li>
+                <li>Phone number</li>
+                <li>Website</li>
+                <li>Hours (if applicable)</li>
+                <li>Professional photo</li>
+                <li>Business description/bio</li>
+            </ul>
+        </div>
+
+        <div class="step-card">
+            <p><strong>Zillow:</strong></p>
+            <ul>
+                <li>Profile name</li>
+                <li>Contact information</li>
+                <li>Office address</li>
+                <li>Phone number</li>
+                <li>Email</li>
+                <li>Professional photo</li>
+                <li>Bio/specializations</li>
+            </ul>
+        </div>
+
+        <div class="step-card">
+            <p><strong>Realtor.com:</strong></p>
+            <ul>
+                <li>Agent name</li>
+                <li>Office address</li>
+                <li>Phone</li>
+                <li>Email</li>
+                <li>Agent photo</li>
+                <li>Office information</li>
+                <li>NAR credentials</li>
+            </ul>
+        </div>
+
+        <div class="step-card">
+            <p><strong>Redfin:</strong></p>
+            <ul>
+                <li>Display name</li>
+                <li>Contact information</li>
+                <li>Office location</li>
+                <li>Phone</li>
+                <li>Agent photo</li>
+                <li>Specializations</li>
+            </ul>
+        </div>
+
+        <div class="step-card">
+            <p><strong>Yelp:</strong></p>
+            <ul>
+                <li>Business name</li>
+                <li>Address</li>
+                <li>Phone</li>
+                <li>Hours</li>
+                <li>Website</li>
+                <li>Business photo</li>
+                <li>Business description</li>
+            </ul>
+        </div>
+
+        <div class="step-card">
+            <p><strong>Facebook:</strong></p>
+            <ul>
+                <li>Business name</li>
+                <li>Address</li>
+                <li>Phone</li>
+                <li>Email</li>
+                <li>Website</li>
+                <li>Hours</li>
+                <li>About section</li>
+                <li>Profile and cover photos</li>
+            </ul>
+        </div>
+
+        <div class="step-card">
+            <p><strong>BBB:</strong></p>
+            <ul>
+                <li>Business name</li>
+                <li>Address</li>
+                <li>Phone</li>
+                <li>Email</li>
+                <li>Website</li>
+                <li>Business description</li>
+            </ul>
+        </div>
+
+        <p><strong>Pro tips while updating:</strong></p>
+
+        <ul>
+            <li>Copy and paste your canonical NAP instead of retyping</li>
+            <li>After each update, screenshot the change</li>
+            <li>Wait 24 hours after Google before checking other platforms (they may cross-reference)</li>
+            <li>Don't update multiple platforms simultaneously (if something goes wrong, you won't know which one)</li>
+            <li>Check for auto-formatting (some directories auto-format phone numbers)</li>
+        </ul>
+
+        <h2>Step 5: Verify Changes and Monitor</h2>
+
+        <p>After updating everything, wait a few days and verify that changes have taken effect.</p>
+
+        <div class="step-card">
+            <p><strong>Verification checklist:</strong></p>
+
+            <div class="checklist">
+                <div class="checklist-item">
+                    <div class="checklist-checkbox"></div>
+                    <div>Google Business Profile updated (3 days)</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-checkbox"></div>
+                    <div>Zillow showing correct info</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-checkbox"></div>
+                    <div>Realtor.com showing correct info</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-checkbox"></div>
+                    <div>Redfin showing correct info</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-checkbox"></div>
+                    <div>Yelp showing correct info</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-checkbox"></div>
+                    <div>Facebook showing correct info</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-checkbox"></div>
+                    <div>BBB showing correct info</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-checkbox"></div>
+                    <div>Google Search shows correct info</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-checkbox"></div>
+                    <div>No duplicate profiles remaining</div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Ongoing monitoring</h3>
+
+        <p>NAP data doesn't stay consistent forever. Directories get hacked. Information drifts. People accidentally update the wrong field.</p>
+
+        <p>Schedule quarterly checks (every 3 months) where you search yourself on all 7 platforms and verify consistency.</p>
+
+        <p>This takes 15-20 minutes quarterly instead of 3-4 hours once a year.</p>
+
+        <div class="callout">
+            <p><strong>Real example:</strong> One agent fixed her NAP perfectly. Six months later, Zillow auto-updated her address using outdated MLS data from an old listing. She caught it during her quarterly check and corrected it before any damage was done.</p>
+        </div>
+
+        <h2>Timeline for Changes to Take Effect</h2>
+
+        <p>Different platforms sync at different speeds:</p>
+
+        <ul>
+            <li><strong>Google Business Profile:</strong> 1-3 days</li>
+            <li><strong>Zillow:</strong> 24-48 hours</li>
+            <li><strong>Realtor.com:</strong> 2-7 days</li>
+            <li><strong>Redfin:</strong> 1-2 days</li>
+            <li><strong>Yelp:</strong> 1-3 days</li>
+            <li><strong>Facebook:</strong> Immediate</li>
+            <li><strong>BBB:</strong> 3-10 days</li>
+        </ul>
+
+        <p>Don't panic if changes don't show up immediately. These platforms cache data and update periodically.</p>
+
+        <div class="cta-box">
+            <h3>Let our tool do the heavy lifting</h3>
+            <p>Our NAP Check tool helps you identify exactly which directories have inconsistencies, so you know exactly what needs fixing.</p>
+            <a href="/real-estate/" class="cta-button">
+                Run My NAP Audit (Free)
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+            </a>
+        </div>
+
+        <h2>What to expect after fixing your NAP</h2>
+
+        <p>Agents who fix NAP inconsistencies typically see improvements within 2-4 weeks:</p>
+
+        <ul>
+            <li>Google ranking position improves 1-3 spots</li>
+            <li>Leads increase 2-4 per week on average</li>
+            <li>AI responses mention you more frequently</li>
+            <li>Customer trust increases (more consistent = more professional)</li>
+            <li>Phone inquiries increase (people can actually reach you)</li>
+        </ul>
+
+        <p>This isn't magic. It's just removing friction from your discoverability.</p>
+
+        <p style="margin-top: 48px;"><strong>Related reading:</strong></p>
+        <ul>
+            <li><a href="/real-estate/common-nap-mistakes/">Common NAP Mistakes That Hurt Your Rankings</a> — What you're trying to fix</li>
+            <li><a href="/real-estate/directories-ai-trusts/">The 7 Directories AI Trusts Most</a> — Why these 7 matter</li>
+            <li><a href="/nap-real-estate">NAP Consistency for Real Estate Agents</a> — The bigger picture</li>
+        </ul>
+    </article>
+
+    <footer class="footer">
+        <p>A product of <a href="https://askandbefound.com">Ask and Be Found</a> · Helping businesses get discovered by AI</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is NAP in Local SEO? A Simple Explanation | NAP Check</title>
+    <meta name="description" content="NAP stands for Name, Address, Phone—the three pieces of information that help search engines and AI assistants identify your business. Here's why it matters.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-purple: #5B21B6;
+            --primary-purple-light: #7C3AED;
+            --secondary-teal: #0D9488;
+            --text-primary: #1E1B4B;
+            --text-secondary: #475569;
+            --text-muted: #64748B;
+            --bg-warm-white: #FAFAF9;
+            --bg-subtle: #F5F3FF;
+            --border-light: #E2E8F0;
+            --white: #FFFFFF;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg-warm-white); color: var(--text-primary); line-height: 1.7; font-size: 18px; }
+        .header { background: var(--white); border-bottom: 1px solid var(--border-light); padding: 16px 24px; position: sticky; top: 0; z-index: 100; }
+        .header-content { max-width: 800px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--primary-purple), var(--secondary-teal)); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+        .logo-icon svg { width: 20px; height: 20px; color: white; }
+        .logo-text { font-size: 18px; font-weight: 700; color: var(--text-primary); }
+        .logo-text span { color: var(--primary-purple); }
+        .header-cta { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-light)); color: white; padding: 10px 20px; font-size: 14px; font-weight: 600; border-radius: 8px; text-decoration: none; transition: all 0.2s ease; }
+        .header-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(91, 33, 182, 0.3); }
+        article { max-width: 720px; margin: 0 auto; padding: 60px 24px 100px; }
+        .article-hero { text-align: center; margin-bottom: 48px; }
+        .article-category { display: inline-block; background: var(--bg-subtle); color: var(--primary-purple); padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 600; margin-bottom: 20px; }
+        h1 { font-size: 42px; font-weight: 700; line-height: 1.2; color: var(--text-primary); margin-bottom: 20px; }
+        .article-subtitle { font-size: 22px; color: var(--text-secondary); line-height: 1.5; }
+        .article-meta { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 24px; font-size: 14px; color: var(--text-muted); }
+        h2 { font-size: 28px; font-weight: 700; color: var(--text-primary); margin: 48px 0 20px; }
+        h3 { font-size: 22px; font-weight: 600; color: var(--text-primary); margin: 36px 0 16px; }
+        p { margin-bottom: 20px; color: var(--text-secondary); }
+        a { color: var(--primary-purple); text-decoration: underline; text-decoration-color: rgba(91, 33, 182, 0.3); text-underline-offset: 2px; }
+        a:hover { text-decoration-color: var(--primary-purple); }
+        .callout { background: var(--bg-subtle); border-left: 4px solid var(--primary-purple); padding: 24px 28px; margin: 32px 0; border-radius: 0 12px 12px 0; }
+        .callout p:last-child { margin-bottom: 0; }
+        ul, ol { margin: 20px 0 20px 24px; color: var(--text-secondary); }
+        li { margin-bottom: 12px; }
+        .analogy { background: var(--white); border: 2px solid var(--border-light); border-radius: 16px; padding: 28px; margin: 32px 0; }
+        .analogy-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; font-weight: 600; color: var(--primary-purple); }
+        .analogy-header svg { width: 24px; height: 24px; }
+        .analogy p { margin-bottom: 0; }
+        .cta-box { background: linear-gradient(135deg, rgba(91, 33, 182, 0.05), rgba(13, 148, 136, 0.05)); border: 1px solid rgba(91, 33, 182, 0.15); border-radius: 16px; padding: 40px; text-align: center; margin: 48px 0; }
+        .cta-box h3 { margin-top: 0; color: var(--text-primary); }
+        .cta-button { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-light)); color: white; padding: 16px 32px; font-size: 17px; font-weight: 600; border-radius: 12px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(91, 33, 182, 0.25); }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(91, 33, 182, 0.35); color: white; }
+        .tldr { background: linear-gradient(135deg, rgba(13, 148, 136, 0.1), rgba(13, 148, 136, 0.05)); border: 1px solid rgba(13, 148, 136, 0.2); border-radius: 16px; padding: 28px; margin: 32px 0; }
+        .tldr-header { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--secondary-teal); margin-bottom: 12px; }
+        .tldr ul { margin: 0; }
+        .footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border-light); color: var(--text-muted); font-size: 14px; }
+        .footer a { color: var(--primary-purple); }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--text-muted); text-decoration: none; font-size: 14px; margin-bottom: 24px; }
+        .back-link:hover { color: var(--primary-purple); }
+        .back-link svg { width: 16px; height: 16px; }
+        @media (max-width: 600px) { h1 { font-size: 32px; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="/real-estate/" class="logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <span class="logo-text">NAP<span>Check</span></span>
+            </a>
+            <a href="/real-estate/" class="header-cta">Free NAP Audit</a>
+        </div>
+    </header>
+
+    <article>
+        <a href="/real-estate/nap-consistency-guide/" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+            </svg>
+            Back to the Complete NAP Guide
+        </a>
+
+        <div class="article-hero">
+            <span class="article-category">NAP Basics</span>
+            <h1>What is NAP in Local SEO? A Simple Explanation</h1>
+            <p class="article-subtitle">Three letters. Three pieces of information. One massive impact on whether people can find you.</p>
+            <div class="article-meta">
+                <span>5 min read</span>
+            </div>
+        </div>
+
+        <div class="tldr">
+            <div class="tldr-header">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                </svg>
+                The short version
+            </div>
+            <ul>
+                <li><strong>NAP = Name, Address, Phone</strong></li>
+                <li>It's how search engines verify your business is real</li>
+                <li>When your NAP is the same everywhere, you rank higher</li>
+                <li>When it's inconsistent, search engines (and now AI) get confused</li>
+            </ul>
+        </div>
+
+        <p>If you've ever dipped your toes into local SEO, you've probably heard someone say "make sure your NAP is consistent." And then you nodded along, pretending to know what they meant, while secretly Googling it later.</p>
+
+        <p>No shame. We've all been there.</p>
+
+        <p>Let's break it down so simply that you'll never have to pretend again.</p>
+
+        <h2>NAP stands for Name, Address, Phone</h2>
+
+        <p>That's it. That's the whole acronym.</p>
+
+        <ul>
+            <li><strong>N</strong>ame — Your business name</li>
+            <li><strong>A</strong>ddress — Where your business is located</li>
+            <li><strong>P</strong>hone — Your business phone number</li>
+        </ul>
+
+        <p>These three pieces of information are the core identifiers that tell the internet who you are and how to find you.</p>
+
+        <div class="analogy">
+            <div class="analogy-header">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                </svg>
+                Think of it like your business's ID card
+            </div>
+            <p>When you show your driver's license at a bar, they check your name and photo to verify you're who you say you are. NAP is essentially your business's ID card for the internet. Search engines check it against multiple sources to verify you're a legitimate business.</p>
+        </div>
+
+        <h2>Why does NAP matter for local SEO?</h2>
+
+        <p>Here's the thing about search engines: they don't trust anyone.</p>
+
+        <p>Seriously. Google sees millions of new "businesses" every day, and a lot of them are fake, scammy, or fly-by-night operations. So how does Google figure out who's legit?</p>
+
+        <p>By cross-referencing information from multiple sources.</p>
+
+        <p>When Google sees that your name, address, and phone number are exactly the same on your website, your Google Business Profile, Zillow, Yelp, Facebook, and dozens of other directories—it thinks: "Okay, this business checks out. Multiple sources agree on who they are. I can trust recommending them to searchers."</p>
+
+        <p>But when the information doesn't match? Red flags go up.</p>
+
+        <h3>Inconsistent NAP tells Google:</h3>
+
+        <ul>
+            <li>"Maybe this isn't a real business"</li>
+            <li>"Maybe this business has moved and isn't keeping their info updated"</li>
+            <li>"Maybe there are multiple businesses with similar names and I'm confusing them"</li>
+        </ul>
+
+        <p>Any of these doubts can push you down in search rankings.</p>
+
+        <h2>What about AI? (This is where it gets interesting)</h2>
+
+        <p>Search engines aren't the only ones paying attention to your NAP anymore.</p>
+
+        <p>When someone asks ChatGPT "Who's a good real estate agent in Austin?", the AI pulls information from across the web. It looks at directories. It checks reviews. It cross-references business data.</p>
+
+        <p>And if your NAP is inconsistent, the AI gets just as confused as Google does.</p>
+
+        <div class="callout">
+            <p><strong>Here's what we've discovered:</strong> After analyzing over 1,000 queries to AI assistants about real estate professionals, we found that AI consistently pulls from the same 7 directories. If your NAP is wrong on those sources, AI will either skip you entirely or—worse—give wrong information about you.</p>
+        </div>
+
+        <p><a href="/real-estate/nap-ai-search/">Learn more about how AI uses your NAP →</a></p>
+
+        <h2>What's "Extended NAP"?</h2>
+
+        <p>The core NAP is name, address, phone. But modern local SEO often includes a few extra pieces:</p>
+
+        <ul>
+            <li><strong>Website URL</strong> — Your domain</li>
+            <li><strong>Email</strong> — Business contact email</li>
+            <li><strong>Hours</strong> — When you're open/available</li>
+        </ul>
+
+        <p>Some people call this "NAP+W" (adding website) or just "Extended NAP." The principle is the same: whatever information you share about your business should be consistent everywhere.</p>
+
+        <h2>A quick example</h2>
+
+        <p>Let's say you're Sarah Smith, a real estate agent. Here are some ways your NAP might accidentally become inconsistent:</p>
+
+        <ul>
+            <li>Your website says "Sarah Smith Realty"</li>
+            <li>Google has you as "Sarah Smith Real Estate, LLC"</li>
+            <li>Zillow shows "S. Smith Realty Group"</li>
+            <li>Yelp has your old office address from 2019</li>
+            <li>Facebook lists your cell phone, while everywhere else has your office line</li>
+        </ul>
+
+        <p>To you, these are all obviously the same business. To a computer comparing text strings? They look like five different companies.</p>
+
+        <h2>The bottom line</h2>
+
+        <p>NAP is simple in concept: make sure your business name, address, and phone number are exactly the same everywhere online.</p>
+
+        <p>It's simple—but it's not easy. Because you probably have listings on dozens of sites, some of which you set up years ago and forgot about.</p>
+
+        <p>The first step is finding out where your NAP is inconsistent. And that's where we can help.</p>
+
+        <div class="cta-box">
+            <h3>Find out where your NAP is inconsistent</h3>
+            <p>Our free tool checks the 7 directories that matter most—the ones AI actually uses.</p>
+            <a href="/real-estate/" class="cta-button">
+                Check My NAP (Free)
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+            </a>
+        </div>
+
+        <p style="margin-top: 48px;"><strong>Want to go deeper?</strong> Read <a href="/real-estate/nap-consistency-guide/">our complete guide to NAP consistency</a> for everything you need to know about auditing and fixing your business listings.</p>
+    </article>
+
+    <footer class="footer">
+        <p>A product of <a href="https://askandbefound.com">Ask and Be Found</a> · Helping businesses get discovered by AI</p>
+    </footer>
+</body>
+</html>

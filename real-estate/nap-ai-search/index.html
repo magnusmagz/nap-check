@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAP and AI Search: How Answer Engines Use Your Business Data | NAP Check</title>
+    <meta name="description" content="ChatGPT, Perplexity, and other AI assistants are pulling your business info from directories. Here's how they work—and how to make sure they get you right.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary-purple: #5B21B6; --primary-purple-light: #7C3AED; --secondary-teal: #0D9488; --text-primary: #1E1B4B; --text-secondary: #475569; --text-muted: #64748B; --bg-warm-white: #FAFAF9; --bg-subtle: #F5F3FF; --border-light: #E2E8F0; --white: #FFFFFF; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg-warm-white); color: var(--text-primary); line-height: 1.7; font-size: 18px; }
+        .header { background: var(--white); border-bottom: 1px solid var(--border-light); padding: 16px 24px; position: sticky; top: 0; z-index: 100; }
+        .header-content { max-width: 800px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--primary-purple), var(--secondary-teal)); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+        .logo-icon svg { width: 20px; height: 20px; color: white; }
+        .logo-text { font-size: 18px; font-weight: 700; color: var(--text-primary); }
+        .logo-text span { color: var(--primary-purple); }
+        .header-cta { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-light)); color: white; padding: 10px 20px; font-size: 14px; font-weight: 600; border-radius: 8px; text-decoration: none; }
+        article { max-width: 720px; margin: 0 auto; padding: 60px 24px 100px; }
+        .article-hero { text-align: center; margin-bottom: 48px; }
+        .article-category { display: inline-block; background: var(--bg-subtle); color: var(--primary-purple); padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 600; margin-bottom: 20px; }
+        h1 { font-size: 40px; font-weight: 700; line-height: 1.2; color: var(--text-primary); margin-bottom: 20px; }
+        .article-subtitle { font-size: 22px; color: var(--text-secondary); line-height: 1.5; }
+        .article-meta { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 24px; font-size: 14px; color: var(--text-muted); }
+        h2 { font-size: 28px; font-weight: 700; color: var(--text-primary); margin: 48px 0 20px; }
+        h3 { font-size: 22px; font-weight: 600; color: var(--text-primary); margin: 36px 0 16px; }
+        p { margin-bottom: 20px; color: var(--text-secondary); }
+        a { color: var(--primary-purple); text-decoration: underline; text-decoration-color: rgba(91, 33, 182, 0.3); }
+        .callout { background: var(--bg-subtle); border-left: 4px solid var(--primary-purple); padding: 24px 28px; margin: 32px 0; border-radius: 0 12px 12px 0; }
+        .callout p:last-child { margin-bottom: 0; }
+        ul, ol { margin: 20px 0 20px 24px; color: var(--text-secondary); }
+        li { margin-bottom: 12px; }
+        .analogy { background: var(--white); border: 2px solid var(--border-light); border-radius: 16px; padding: 28px; margin: 32px 0; }
+        .analogy-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; font-weight: 600; color: var(--primary-purple); }
+        .analogy p { margin-bottom: 0; }
+        .cta-box { background: linear-gradient(135deg, rgba(91, 33, 182, 0.05), rgba(13, 148, 136, 0.05)); border: 1px solid rgba(91, 33, 182, 0.15); border-radius: 16px; padding: 40px; text-align: center; margin: 48px 0; }
+        .cta-box h3 { margin-top: 0; color: var(--text-primary); }
+        .cta-button { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-light)); color: white; padding: 16px 32px; font-size: 17px; font-weight: 600; border-radius: 12px; text-decoration: none; box-shadow: 0 4px 15px rgba(91, 33, 182, 0.25); }
+        .cta-button:hover { color: white; }
+        .research-box { background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-light)); color: white; padding: 32px; border-radius: 16px; margin: 40px 0; text-align: center; }
+        .research-box h3 { color: white; margin-top: 0; }
+        .research-box p { color: rgba(255,255,255,0.9); }
+        .research-stat { font-size: 48px; font-weight: 700; display: block; margin-bottom: 8px; }
+        .tldr { background: linear-gradient(135deg, rgba(13, 148, 136, 0.1), rgba(13, 148, 136, 0.05)); border: 1px solid rgba(13, 148, 136, 0.2); border-radius: 16px; padding: 28px; margin: 32px 0; }
+        .tldr-header { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--secondary-teal); margin-bottom: 12px; }
+        .tldr ul { margin: 0; }
+        .footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border-light); color: var(--text-muted); font-size: 14px; }
+        .footer a { color: var(--primary-purple); }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--text-muted); text-decoration: none; font-size: 14px; margin-bottom: 24px; }
+        .back-link:hover { color: var(--primary-purple); }
+        .scenario { background: var(--white); border: 1px solid var(--border-light); border-radius: 12px; padding: 24px; margin: 24px 0; }
+        .scenario-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 8px; }
+        .scenario-text { font-style: italic; color: var(--text-primary); font-size: 17px; }
+        @media (max-width: 600px) { h1 { font-size: 32px; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="/real-estate/" class="logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                </div>
+                <span class="logo-text">NAP<span>Check</span></span>
+            </a>
+            <a href="/real-estate/" class="header-cta">Free NAP Audit</a>
+        </div>
+    </header>
+
+    <article>
+        <a href="/real-estate/nap-consistency-guide/" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>
+            Back to the Complete NAP Guide
+        </a>
+
+        <div class="article-hero">
+            <span class="article-category">AI & Search</span>
+            <h1>NAP and AI Search: How Answer Engines Use Your Business Data</h1>
+            <p class="article-subtitle">People aren't just Googling anymore. They're asking ChatGPT. And ChatGPT is looking at your directory listings.</p>
+            <div class="article-meta">
+                <span>8 min read</span>
+                <span>•</span>
+                <span>Based on 1,000+ AI query analysis</span>
+            </div>
+        </div>
+
+        <div class="tldr">
+            <div class="tldr-header">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+                The short version
+            </div>
+            <ul>
+                <li>AI assistants like ChatGPT pull business info from directories and the web</li>
+                <li>When your NAP is inconsistent, AI gets confused—and might skip you entirely</li>
+                <li>We found 7 directories that AI cites most often for real estate info</li>
+                <li>Fix your NAP on those sources and you fix most of your AI visibility</li>
+            </ul>
+        </div>
+
+        <p>Here's a conversation that's happening right now, somewhere in your city:</p>
+
+        <div class="scenario">
+            <div class="scenario-label">User asks ChatGPT</div>
+            <div class="scenario-text">"Who's a good real estate agent in [your city] who specializes in first-time homebuyers?"</div>
+        </div>
+
+        <p>In about two seconds, ChatGPT gives a list of recommendations. Names. Brief descriptions. Maybe even contact information.</p>
+
+        <p>Is your name on that list?</p>
+
+        <p>If you're like most real estate professionals, you have no idea. You've never thought to ask. You've been focused on Google rankings, Zillow reviews, maybe some Facebook ads.</p>
+
+        <p>But here's the thing: the way people find businesses is changing fast. And if you're not visible to AI assistants, you're invisible to a growing chunk of your potential clients.</p>
+
+        <h2>The new reality: AI is the new search</h2>
+
+        <p>Let's be clear about what's happening.</p>
+
+        <p>People used to search by typing keywords into Google, scrolling through results, and clicking on links. That's still happening, sure. But increasingly, people are just... asking.</p>
+
+        <ul>
+            <li>"Hey Siri, find me a realtor near downtown."</li>
+            <li>"ChatGPT, who are the top-rated agents in Austin for luxury homes?"</li>
+            <li>"Perplexity, I need a real estate agent who speaks Spanish in Miami."</li>
+        </ul>
+
+        <p>These AI assistants don't show you ten blue links. They give you answers. Recommendations. Sometimes they give a single name.</p>
+
+        <p>If that single name isn't you, you just lost a lead you never knew existed.</p>
+
+        <div class="analogy">
+            <div class="analogy-header">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>
+                Think of AI as a very thorough research assistant
+            </div>
+            <p>Imagine you hired someone to research the best real estate agents in your area. They'd check multiple sources: Google, Zillow, Realtor.com, Yelp reviews, Facebook, maybe the BBB. Then they'd synthesize all that information and give you a recommendation. That's exactly what AI does—except it does it in two seconds.</p>
+        </div>
+
+        <h2>Where does AI get its information?</h2>
+
+        <p>This is the million-dollar question. And we actually have data on this.</p>
+
+        <div class="research-box">
+            <h3>We did the research</h3>
+            <span class="research-stat">1,000+</span>
+            <p>We analyzed over 1,000 real estate queries to AI assistants like ChatGPT and Perplexity. We wanted to know exactly where AI gets its information about real estate professionals.</p>
+        </div>
+
+        <p>What we found wasn't surprising, but it was incredibly useful:</p>
+
+        <p><strong>AI consistently pulls from the same sources.</strong> Not hundreds of random websites. The same core set of trusted directories, over and over again.</p>
+
+        <p>For real estate professionals, the top 7 sources are:</p>
+
+        <ol>
+            <li><strong>Google Business Profile</strong> — The mothership. AI trusts Google above almost everything.</li>
+            <li><strong>Zillow</strong> — The real estate authority. Heavily cited for agent info.</li>
+            <li><strong>Realtor.com</strong> — Trusted for credentials and transaction history.</li>
+            <li><strong>Redfin</strong> — Growing in importance, especially in certain markets.</li>
+            <li><strong>Yelp</strong> — Trusted for reviews and general business info.</li>
+            <li><strong>Facebook</strong> — Business pages are well-indexed.</li>
+            <li><strong>BBB</strong> — Trust signal that AI takes seriously.</li>
+        </ol>
+
+        <p><a href="/real-estate/directories-ai-trusts/">See our complete research on AI-trusted directories →</a></p>
+
+        <h2>What happens when your NAP is inconsistent</h2>
+
+        <p>Here's where NAP becomes critical.</p>
+
+        <p>AI doesn't just pull information from one source. It cross-references multiple sources to build a picture of who you are. And when those sources don't agree, the AI faces a problem.</p>
+
+        <h3>Scenario 1: AI skips you entirely</h3>
+
+        <p>If your name appears differently on different platforms, AI might not realize all those listings are the same person. "Sarah Smith Realty" and "S. Smith Real Estate Group" might look like two different businesses to an AI.</p>
+
+        <p>Result: Neither version gets recommended because neither seems prominent enough.</p>
+
+        <h3>Scenario 2: AI gives wrong information</h3>
+
+        <p>If your address is outdated on one source, the AI might pull that old address when someone asks for your contact info.</p>
+
+        <div class="callout">
+            <p><strong>Real example:</strong> One agent discovered ChatGPT was telling people she'd retired. Why? An old directory listing from 2018 said "no longer active." The AI took that as truth and was actively turning away potential clients.</p>
+        </div>
+
+        <h3>Scenario 3: AI confuses you with someone else</h3>
+
+        <p>If your information overlaps with another agent (common first name, similar address), inconsistent NAP makes it harder for AI to tell you apart.</p>
+
+        <p>Result: Your reviews might get attributed to someone else, or vice versa.</p>
+
+        <h2>The good news: It's fixable</h2>
+
+        <p>Unlike SEO (which can take months to improve), fixing your NAP for AI visibility is relatively straightforward:</p>
+
+        <ol>
+            <li><strong>Identify inconsistencies</strong> — Check your listings on the 7 key directories</li>
+            <li><strong>Choose your canonical NAP</strong> — Decide exactly how your info should appear</li>
+            <li><strong>Update everywhere</strong> — Make everything match</li>
+            <li><strong>Monitor periodically</strong> — Check every few months</li>
+        </ol>
+
+        <p>The fix isn't complicated. It's just tedious. Which is why we built a tool to make it easier.</p>
+
+        <div class="cta-box">
+            <h3>See how AI sees you</h3>
+            <p>Our free NAP Check tool audits the 7 directories that AI trusts most. Find out where your inconsistencies are—before they cost you clients.</p>
+            <a href="/real-estate/" class="cta-button">
+                Run My Free AI Visibility Audit
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+            </a>
+        </div>
+
+        <h2>What about the future?</h2>
+
+        <p>AI search is only going to grow. Google is integrating AI overviews. Bing has Copilot. Apple is adding AI to Siri. Every major platform is moving toward conversational, answer-based search.</p>
+
+        <p>The businesses that win will be the ones that AI can understand and trust. And that starts with consistent, accurate NAP data across the sources AI relies on.</p>
+
+        <p>It's not sexy. It's not complicated. But it might be the highest-ROI marketing activity you do this year.</p>
+
+        <p style="margin-top: 48px;"><strong>Related reading:</strong></p>
+        <ul>
+            <li><a href="/real-estate/not-showing-chatgpt/">Why Am I Not Showing Up in ChatGPT?</a></li>
+            <li><a href="/real-estate/change-chatgpt-description/">I Don't Like How ChatGPT Describes Me — Here's How to Change It</a></li>
+            <li><a href="/real-estate/ai-query-research/">Our Full AI Query Research Study</a></li>
+        </ul>
+    </article>
+
+    <footer class="footer">
+        <p>A product of <a href="https://askandbefound.com">Ask and Be Found</a> · Helping businesses get discovered by AI</p>
+    </footer>
+</body>
+</html>

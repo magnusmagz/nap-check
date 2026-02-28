@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAP Check - AI Visibility Audit for Local Professionals</title>
+    <meta name="description" content="Check your NAP consistency across the directories AI trusts most. Free audit tool for real estate agents and mortgage advisors.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-purple: #5B21B6;
+            --primary-purple-light: #7C3AED;
+            --secondary-teal: #0D9488;
+            --secondary-teal-light: #14B8A6;
+            --text-primary: #1E1B4B;
+            --text-secondary: #475569;
+            --text-muted: #64748B;
+            --bg-warm-white: #FAFAF9;
+            --bg-subtle: #F5F3FF;
+            --border-light: #E2E8F0;
+            --white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-warm-white);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            padding: 16px 24px;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-teal));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg {
+            width: 22px;
+            height: 22px;
+            color: white;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .logo-text span {
+            color: var(--primary-purple);
+        }
+
+        .header-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-subtle);
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--primary-purple);
+            font-weight: 500;
+        }
+
+        /* Hero */
+        .hero {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 24px 60px;
+            text-align: center;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(91, 33, 182, 0.1), rgba(13, 148, 136, 0.1));
+            border: 1px solid rgba(91, 33, 182, 0.2);
+            padding: 8px 18px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--primary-purple);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Persona cards */
+        .personas {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 24px 80px;
+        }
+
+        .personas-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .personas-header h2 {
+            font-size: 24px;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .personas-header p {
+            color: var(--text-muted);
+        }
+
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 700px) {
+            .persona-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+
+        .persona-card {
+            background: var(--white);
+            border: 2px solid var(--border-light);
+            border-radius: 20px;
+            padding: 40px 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .persona-card:hover {
+            border-color: var(--primary-purple);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(91, 33, 182, 0.12);
+        }
+
+        .persona-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, rgba(91, 33, 182, 0.1), rgba(13, 148, 136, 0.1));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .persona-icon svg {
+            width: 36px;
+            height: 36px;
+            color: var(--primary-purple);
+        }
+
+        .persona-card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .persona-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .persona-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-purple);
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .persona-cta svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.2s ease;
+        }
+
+        .persona-card:hover .persona-cta svg {
+            transform: translateX(4px);
+        }
+
+        .persona-card.coming-soon {
+            opacity: 0.7;
+            cursor: default;
+        }
+
+        .persona-card.coming-soon:hover {
+            border-color: var(--border-light);
+            transform: none;
+            box-shadow: none;
+        }
+
+        .coming-soon-badge {
+            display: inline-block;
+            background: var(--bg-subtle);
+            color: var(--primary-purple);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        /* Why section */
+        .why-section {
+            background: var(--white);
+            border-top: 1px solid var(--border-light);
+            padding: 80px 24px;
+        }
+
+        .why-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .why-content h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .why-content p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* How it works */
+        .how-section {
+            padding: 80px 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .how-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .how-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .how-header p {
+            color: var(--text-secondary);
+            font-size: 18px;
+        }
+
+        .how-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        @media (max-width: 700px) {
+            .how-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .how-step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-teal));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+            margin: 0 auto 20px;
+        }
+
+        .how-step h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .how-step p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid var(--border-light);
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: var(--primary-purple);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="/" class="logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <span class="logo-text">NAP<span>Check</span></span>
+            </a>
+            <div class="header-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 14px; height: 14px;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" />
+                </svg>
+                Powered by Ask and Be Found
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-eyebrow">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            </svg>
+            Free AI Visibility Audit
+        </div>
+        <h1>Is AI Sending Clients <span class="highlight">Your Way?</span></h1>
+        <p class="hero-subtitle">When people ask ChatGPT for a recommendation, your NAP (Name, Address, Phone) consistency determines whether you show up—or get skipped. Check yours in minutes.</p>
+    </section>
+
+    <section class="personas">
+        <div class="personas-header">
+            <h2>Choose your industry</h2>
+            <p>We've tailored the audit to check the directories that matter most for your business.</p>
+        </div>
+        <div class="persona-grid">
+            <a href="/real-estate/" class="persona-card">
+                <div class="persona-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
+                    </svg>
+                </div>
+                <h3>Real Estate Agent</h3>
+                <p>Check your NAP across Zillow, Realtor.com, Redfin, Google, and more—the 7 directories AI trusts most for real estate.</p>
+                <span class="persona-cta">
+                    Start Free Audit
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                </span>
+            </a>
+
+            <div class="persona-card coming-soon">
+                <span class="coming-soon-badge">Coming Soon</span>
+                <div class="persona-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+                    </svg>
+                </div>
+                <h3>Mortgage Advisor</h3>
+                <p>Check your NAP across LendingTree, Bankrate, NerdWallet, Google, and other directories mortgage seekers use.</p>
+                <span class="persona-cta" style="color: var(--text-muted);">
+                    Join Waitlist
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-section">
+        <div class="why-content">
+            <h2>Why NAP Consistency Matters Now</h2>
+            <p>AI assistants like ChatGPT and Perplexity are the new search. When someone asks for a recommendation, AI cross-references your business information from multiple directories. If your Name, Address, and Phone don't match, AI gets confused—and skips you entirely.</p>
+            <div class="stats-row">
+                <div class="stat">
+                    <div class="stat-value">1,000+</div>
+                    <div class="stat-label">AI queries analyzed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">7</div>
+                    <div class="stat-label">Key directories identified</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">80%</div>
+                    <div class="stat-label">Of AI citations from these sources</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-section">
+        <div class="how-header">
+            <h2>How It Works</h2>
+            <p>Three simple steps to check your AI visibility</p>
+        </div>
+        <div class="how-steps">
+            <div class="how-step">
+                <div class="step-number">1</div>
+                <h3>Enter Your Info</h3>
+                <p>Tell us your correct NAP—exactly how it should appear across all directories.</p>
+            </div>
+            <div class="how-step">
+                <div class="step-number">2</div>
+                <h3>Check Each Directory</h3>
+                <p>We generate search links. You click, verify, and mark whether each listing matches.</p>
+            </div>
+            <div class="how-step">
+                <div class="step-number">3</div>
+                <h3>Get Your Score</h3>
+                <p>See your NAP consistency score and exactly where to fix issues.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>A product of <a href="https://askandbefound.com">Ask and Be Found</a> · Helping local professionals get discovered by AI</p>
+    </footer>
+</body>
+</html>

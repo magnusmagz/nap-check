@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAP Consistency Checklist for Real Estate Professionals | NAP Check</title>
+    <meta name="description" content="A printable checklist to audit and maintain your NAP consistency across key directories. Includes AI-ready optimization tips.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary-purple: #5B21B6; --primary-purple-light: #7C3AED; --secondary-teal: #0D9488; --text-primary: #1E1B4B; --text-secondary: #475569; --text-muted: #64748B; --bg-warm-white: #FAFAF9; --bg-subtle: #F5F3FF; --border-light: #E2E8F0; --white: #FFFFFF; --success: #10B981; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg-warm-white); color: var(--text-primary); line-height: 1.7; font-size: 18px; }
+        .header { background: var(--white); border-bottom: 1px solid var(--border-light); padding: 16px 24px; position: sticky; top: 0; z-index: 100; }
+        .header-content { max-width: 800px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--primary-purple), var(--secondary-teal)); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+        .logo-icon svg { width: 20px; height: 20px; color: white; }
+        .logo-text { font-size: 18px; font-weight: 700; color: var(--text-primary); }
+        .logo-text span { color: var(--primary-purple); }
+        .header-cta { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-light)); color: white; padding: 10px 20px; font-size: 14px; font-weight: 600; border-radius: 8px; text-decoration: none; }
+        article { max-width: 720px; margin: 0 auto; padding: 60px 24px 100px; }
+        .article-hero { text-align: center; margin-bottom: 48px; }
+        .article-category { display: inline-block; background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05)); color: #059669; padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 600; margin-bottom: 20px; }
+        h1 { font-size: 40px; font-weight: 700; line-height: 1.2; color: var(--text-primary); margin-bottom: 20px; }
+        .article-subtitle { font-size: 22px; color: var(--text-secondary); line-height: 1.5; }
+        .article-meta { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 24px; font-size: 14px; color: var(--text-muted); }
+        h2 { font-size: 26px; font-weight: 700; color: var(--text-primary); margin: 48px 0 20px; }
+        h3 { font-size: 20px; font-weight: 600; color: var(--text-primary); margin: 32px 0 16px; }
+        p { margin-bottom: 20px; color: var(--text-secondary); }
+        a { color: var(--primary-purple); text-decoration: underline; text-decoration-color: rgba(91, 33, 182, 0.3); }
+        ul { margin: 20px 0 20px 0; color: var(--text-secondary); list-style: none; }
+        li { margin-bottom: 12px; }
+        .cta-box { background: linear-gradient(135deg, rgba(91, 33, 182, 0.05), rgba(13, 148, 136, 0.05)); border: 1px solid rgba(91, 33, 182, 0.15); border-radius: 16px; padding: 40px; text-align: center; margin: 48px 0; }
+        .cta-box h3 { margin-top: 0; color: var(--text-primary); }
+        .cta-button { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-light)); color: white; padding: 16px 32px; font-size: 17px; font-weight: 600; border-radius: 12px; text-decoration: none; box-shadow: 0 4px 15px rgba(91, 33, 182, 0.25); }
+        .cta-button:hover { color: white; }
+        .footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border-light); color: var(--text-muted); font-size: 14px; }
+        .footer a { color: var(--primary-purple); }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--text-muted); text-decoration: none; font-size: 14px; margin-bottom: 24px; }
+        .back-link:hover { color: var(--primary-purple); }
+
+        /* Checklist styles */
+        .checklist-section { background: var(--white); border: 1px solid var(--border-light); border-radius: 16px; padding: 32px; margin: 32px 0; }
+        .checklist-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border-light); }
+        .checklist-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--primary-purple), var(--secondary-teal)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; }
+        .checklist-title { font-size: 20px; font-weight: 600; color: var(--text-primary); }
+        .checklist-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px dashed var(--border-light); }
+        .checklist-item:last-child { border-bottom: none; }
+        .checkbox { width: 22px; height: 22px; border: 2px solid var(--border-light); border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
+        .checklist-text { flex: 1; }
+        .checklist-text strong { color: var(--text-primary); }
+
+        /* Canonical NAP box */
+        .canonical-box { background: var(--bg-subtle); border: 2px dashed var(--primary-purple); border-radius: 12px; padding: 28px; margin: 32px 0; }
+        .canonical-header { font-weight: 700; color: var(--primary-purple); margin-bottom: 16px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px; }
+        .canonical-field { margin-bottom: 16px; }
+        .canonical-label { font-size: 13px; color: var(--text-muted); margin-bottom: 4px; }
+        .canonical-input { width: 100%; padding: 12px; border: 1px solid var(--border-light); border-radius: 8px; font-size: 16px; font-family: inherit; background: var(--white); }
+
+        /* Print styles */
+        .print-button { display: inline-flex; align-items: center; gap: 8px; background: var(--white); border: 1px solid var(--border-light); color: var(--text-secondary); padding: 12px 20px; font-size: 15px; font-weight: 500; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+        .print-button:hover { border-color: var(--primary-purple); color: var(--primary-purple); }
+
+        @media print {
+            .header, .footer, .cta-box, .print-button, .back-link { display: none; }
+            body { background: white; font-size: 14px; }
+            article { padding: 20px; max-width: 100%; }
+            .checklist-section { break-inside: avoid; border: 1px solid #ccc; }
+            .checkbox { border: 2px solid #333; }
+        }
+
+        @media (max-width: 600px) { h1 { font-size: 32px; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="/real-estate/" class="logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                </div>
+                <span class="logo-text">NAP<span>Check</span></span>
+            </a>
+            <a href="/real-estate/" class="header-cta">Free NAP Audit</a>
+        </div>
+    </header>
+
+    <article>
+        <a href="/real-estate/nap-consistency-guide/" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>
+            Back to the Complete NAP Guide
+        </a>
+
+        <div class="article-hero">
+            <span class="article-category">Printable Resource</span>
+            <h1>NAP Consistency Checklist for Real Estate Professionals</h1>
+            <p class="article-subtitle">Everything you need to audit and maintain your business listings. Print it, check it off, own your online presence.</p>
+            <div class="article-meta">
+                <span>5 min to complete</span>
+                <span>•</span>
+                <button class="print-button" onclick="window.print()">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0110.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0l.229 2.523a1.125 1.125 0 01-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0021 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 00-1.913-.247M6.34 18H5.25A2.25 2.25 0 013 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 011.913-.247m10.5 0a48.536 48.536 0 00-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5zm-3 0h.008v.008H15V10.5z" /></svg>
+                    Print Checklist
+                </button>
+            </div>
+        </div>
+
+        <p>We've distilled everything from our <a href="/real-estate/nap-consistency-guide/">complete NAP guide</a> into a practical, printable checklist. Use this to audit your listings, fix inconsistencies, and set up ongoing monitoring.</p>
+
+        <p>Work through each section in order. Check off items as you go. By the end, you'll have consistent, AI-ready business listings across all the platforms that matter.</p>
+
+        <!-- Canonical NAP Section -->
+        <div class="canonical-box">
+            <div class="canonical-header">Step 1: Define Your Canonical NAP</div>
+            <p style="margin-bottom: 20px; font-size: 15px;">This is your "source of truth." Every listing should match this exactly.</p>
+
+            <div class="canonical-field">
+                <div class="canonical-label">Business Name (exactly as it should appear)</div>
+                <input type="text" class="canonical-input" placeholder="e.g., Smith Realty Group">
+            </div>
+            <div class="canonical-field">
+                <div class="canonical-label">Street Address (including suite/unit)</div>
+                <input type="text" class="canonical-input" placeholder="e.g., 123 Main Street, Suite 100">
+            </div>
+            <div class="canonical-field">
+                <div class="canonical-label">City, State, ZIP</div>
+                <input type="text" class="canonical-input" placeholder="e.g., Austin, TX 78701">
+            </div>
+            <div class="canonical-field">
+                <div class="canonical-label">Phone Number (exact format)</div>
+                <input type="text" class="canonical-input" placeholder="e.g., (512) 555-1234">
+            </div>
+            <div class="canonical-field">
+                <div class="canonical-label">Website URL</div>
+                <input type="text" class="canonical-input" placeholder="e.g., https://www.smithrealty.com">
+            </div>
+            <div class="canonical-field" style="margin-bottom: 0;">
+                <div class="canonical-label">Business Email</div>
+                <input type="text" class="canonical-input" placeholder="e.g., info@smithrealty.com">
+            </div>
+        </div>
+
+        <!-- Directory Audit Checklist -->
+        <div class="checklist-section">
+            <div class="checklist-header">
+                <div class="checklist-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:20px;height:20px"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+                </div>
+                <div class="checklist-title">Step 2: Audit the 7 Key Directories</div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Google Business Profile</strong> — Search for yourself, verify NAP matches, check hours and categories</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Zillow Agent Profile</strong> — Check name, contact info, current brokerage, active status</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Realtor.com</strong> — Verify credentials, office info, and contact details</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Redfin</strong> — Check if listing exists, verify all info matches</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Yelp</strong> — Search for business listing, claim if needed, verify NAP</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Facebook Business Page</strong> — Check page info, contact details, address</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>BBB</strong> — Search for listing, verify business info and accreditation status</div>
+            </div>
+        </div>
+
+        <!-- Common Issues Checklist -->
+        <div class="checklist-section">
+            <div class="checklist-header">
+                <div class="checklist-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:20px;height:20px"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg>
+                </div>
+                <div class="checklist-title">Step 3: Check for These Common Issues</div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Abbreviation inconsistencies</strong> — St vs Street, Ave vs Avenue, Ste vs Suite</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Phone format variations</strong> — (555) 123-4567 vs 555-123-4567 vs 5551234567</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Business name variations</strong> — Inc, LLC, "Realtor" suffix, team vs individual</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Old office addresses</strong> — Check for previous locations you've moved from</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Previous brokerage info</strong> — Make sure old affiliations are updated</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>"Retired" or "inactive" flags</strong> — Search for old listings marking you as no longer active</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Duplicate listings</strong> — Look for multiple profiles on the same platform</div>
+            </div>
+        </div>
+
+        <!-- Fix & Update Checklist -->
+        <div class="checklist-section">
+            <div class="checklist-header">
+                <div class="checklist-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:20px;height:20px"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" /></svg>
+                </div>
+                <div class="checklist-title">Step 4: Fix Issues</div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Claim all unclaimed listings</strong> — Verify ownership of each profile</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Update NAP to match canonical version</strong> — Copy-paste, don't retype</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Complete sparse profiles</strong> — Add photos, bio, credentials, specialties</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Request removal of duplicates</strong> — Merge or delete extra listings</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Update bios to be AI-friendly</strong> — Add specific geography, specialties, numbers</div>
+            </div>
+        </div>
+
+        <!-- AI-Ready Bonus Checklist -->
+        <div class="checklist-section">
+            <div class="checklist-header">
+                <div class="checklist-icon" style="background: linear-gradient(135deg, var(--secondary-teal), #0D9488);">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:20px;height:20px"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" /></svg>
+                </div>
+                <div class="checklist-title">Bonus: AI-Ready Optimization</div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Add specific specialties</strong> — "First-time buyers," "Luxury homes," "Investment properties"</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Include specific geography</strong> — Neighborhoods, zip codes, not just city</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Add quantifiable achievements</strong> — Years experience, transactions, average sale price</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>List languages spoken</strong> — If applicable</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Include certifications</strong> — CRS, ABR, SRES, etc.</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Update within last 12 months</strong> — Freshness signals matter</div>
+            </div>
+        </div>
+
+        <!-- Ongoing Maintenance -->
+        <div class="checklist-section">
+            <div class="checklist-header">
+                <div class="checklist-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:20px;height:20px"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>
+                </div>
+                <div class="checklist-title">Step 5: Set Up Ongoing Monitoring</div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Calendar reminder: Quarterly audit</strong> — Re-check all 7 directories every 3 months</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Update immediately when info changes</strong> — New office, new phone, new brokerage</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Check AI periodically</strong> — Ask ChatGPT about yourself to spot issues</div>
+            </div>
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div class="checklist-text"><strong>Google yourself monthly</strong> — Look for new listings that may have wrong info</div>
+            </div>
+        </div>
+
+        <div class="cta-box">
+            <h3>Want to automate part of this?</h3>
+            <p>Our free NAP Check tool walks you through the 7 key directories and generates search links automatically. It's faster than doing it manually.</p>
+            <a href="/real-estate/" class="cta-button">
+                Use the NAP Check Tool (Free)
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+            </a>
+        </div>
+
+        <p style="margin-top: 48px;"><strong>Need help fixing issues?</strong> Read our <a href="/real-estate/fix-nap-inconsistencies/">step-by-step guide to fixing NAP inconsistencies</a> for detailed instructions on each directory.</p>
+    </article>
+
+    <footer class="footer">
+        <p>A product of <a href="https://askandbefound.com">Ask and Be Found</a> · Helping businesses get discovered by AI</p>
+    </footer>
+</body>
+</html>

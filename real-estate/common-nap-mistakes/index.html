@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common NAP Mistakes That Hurt Your Local Rankings | NAP Check</title>
+    <meta name="description" content="These 5 NAP mistakes are costing real estate agents leads and visibility. Here's how to spot them and fix them.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-purple: #5B21B6;
+            --primary-purple-light: #7C3AED;
+            --secondary-teal: #0D9488;
+            --text-primary: #1E1B4B;
+            --text-secondary: #475569;
+            --text-muted: #64748B;
+            --bg-warm-white: #FAFAF9;
+            --bg-subtle: #F5F3FF;
+            --border-light: #E2E8F0;
+            --white: #FFFFFF;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg-warm-white); color: var(--text-primary); line-height: 1.7; font-size: 18px; }
+        .header { background: var(--white); border-bottom: 1px solid var(--border-light); padding: 16px 24px; position: sticky; top: 0; z-index: 100; }
+        .header-content { max-width: 800px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--primary-purple), var(--secondary-teal)); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+        .logo-icon svg { width: 20px; height: 20px; color: white; }
+        .logo-text { font-size: 18px; font-weight: 700; color: var(--text-primary); }
+        .logo-text span { color: var(--primary-purple); }
+        .header-cta { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-light)); color: white; padding: 10px 20px; font-size: 14px; font-weight: 600; border-radius: 8px; text-decoration: none; transition: all 0.2s ease; }
+        .header-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(91, 33, 182, 0.3); }
+        article { max-width: 720px; margin: 0 auto; padding: 60px 24px 100px; }
+        .article-hero { text-align: center; margin-bottom: 48px; }
+        .article-category { display: inline-block; background: var(--bg-subtle); color: var(--primary-purple); padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 600; margin-bottom: 20px; }
+        h1 { font-size: 42px; font-weight: 700; line-height: 1.2; color: var(--text-primary); margin-bottom: 20px; }
+        .article-subtitle { font-size: 22px; color: var(--text-secondary); line-height: 1.5; }
+        .article-meta { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 24px; font-size: 14px; color: var(--text-muted); }
+        h2 { font-size: 28px; font-weight: 700; color: var(--text-primary); margin: 48px 0 20px; }
+        h3 { font-size: 22px; font-weight: 600; color: var(--text-primary); margin: 36px 0 16px; }
+        p { margin-bottom: 20px; color: var(--text-secondary); }
+        a { color: var(--primary-purple); text-decoration: underline; text-decoration-color: rgba(91, 33, 182, 0.3); text-underline-offset: 2px; }
+        a:hover { text-decoration-color: var(--primary-purple); }
+        .callout { background: var(--bg-subtle); border-left: 4px solid var(--primary-purple); padding: 24px 28px; margin: 32px 0; border-radius: 0 12px 12px 0; }
+        .callout p:last-child { margin-bottom: 0; }
+        ul, ol { margin: 20px 0 20px 24px; color: var(--text-secondary); }
+        li { margin-bottom: 12px; }
+        .analogy { background: var(--white); border: 2px solid var(--border-light); border-radius: 16px; padding: 28px; margin: 32px 0; }
+        .analogy-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; font-weight: 600; color: var(--primary-purple); }
+        .analogy-header svg { width: 24px; height: 24px; }
+        .analogy p { margin-bottom: 0; }
+        .cta-box { background: linear-gradient(135deg, rgba(91, 33, 182, 0.05), rgba(13, 148, 136, 0.05)); border: 1px solid rgba(91, 33, 182, 0.15); border-radius: 16px; padding: 40px; text-align: center; margin: 48px 0; }
+        .cta-box h3 { margin-top: 0; color: var(--text-primary); }
+        .cta-button { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-light)); color: white; padding: 16px 32px; font-size: 17px; font-weight: 600; border-radius: 12px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(91, 33, 182, 0.25); }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(91, 33, 182, 0.35); color: white; }
+        .tldr { background: linear-gradient(135deg, rgba(13, 148, 136, 0.1), rgba(13, 148, 136, 0.05)); border: 1px solid rgba(13, 148, 136, 0.2); border-radius: 16px; padding: 28px; margin: 32px 0; }
+        .tldr-header { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--secondary-teal); margin-bottom: 12px; }
+        .tldr ul { margin: 0; }
+        .footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border-light); color: var(--text-muted); font-size: 14px; }
+        .footer a { color: var(--primary-purple); }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--text-muted); text-decoration: none; font-size: 14px; margin-bottom: 24px; }
+        .back-link:hover { color: var(--primary-purple); }
+        .back-link svg { width: 16px; height: 16px; }
+        .mistake-card { background: var(--white); border: 1px solid var(--border-light); border-radius: 12px; padding: 28px; margin: 28px 0; border-left: 4px solid var(--primary-purple); }
+        .mistake-number { font-size: 36px; font-weight: 700; color: var(--primary-purple); }
+        .mistake-title { font-size: 20px; font-weight: 600; color: var(--text-primary); margin: 12px 0 16px; }
+        .before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+        .before, .after { padding: 16px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 14px; }
+        .before { background: #FFE8E8; color: #8B0000; border: 1px solid #FFB3B3; }
+        .after { background: #E8F8F5; color: #0B5345; border: 1px solid #A3E4D7; }
+        .impact { margin-top: 16px; padding: 12px; background: rgba(255, 152, 0, 0.1); border-left: 3px solid #FF9800; border-radius: 4px; }
+        .impact-label { font-weight: 600; color: #FF6F00; font-size: 13px; }
+        .impact-text { color: var(--text-secondary); font-size: 15px; }
+        @media (max-width: 600px) { h1 { font-size: 32px; } .before-after { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="/real-estate/" class="logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <span class="logo-text">NAP<span>Check</span></span>
+            </a>
+            <a href="/real-estate/" class="header-cta">Free NAP Audit</a>
+        </div>
+    </header>
+
+    <article>
+        <a href="/real-estate/nap-consistency-guide/" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+            </svg>
+            Back to the Complete NAP Guide
+        </a>
+
+        <div class="article-hero">
+            <span class="article-category">NAP Mistakes</span>
+            <h1>Common NAP Mistakes That Hurt Your Local Rankings</h1>
+            <p class="article-subtitle">Most agents make these mistakes without realizing they're costing them leads. Here's what to look for—and how to avoid them.</p>
+            <div class="article-meta">
+                <span>8 min read</span>
+            </div>
+        </div>
+
+        <div class="tldr">
+            <div class="tldr-header">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                </svg>
+                The short version
+            </div>
+            <ul>
+                <li>Abbreviation inconsistency (St vs Street vs St.) tanks your rankings</li>
+                <li>Phone number format differences (123-4567 vs (123) 456-7890) confuse algorithms</li>
+                <li>Business name variations ("Sarah Smith Realty" vs "S. Smith Real Estate") split your visibility</li>
+                <li>Outdated information on old listings actively harms your credibility</li>
+                <li>Forgotten listings on deleted accounts still appear in search results</li>
+            </ul>
+        </div>
+
+        <p>NAP inconsistencies aren't usually intentional. They happen gradually, one small variation at a time, until you realize your information is scattered across the internet in five different formats.</p>
+
+        <p>The problem is that each variation compounds. Google sees them as potentially different businesses. Zillow gets confused. ChatGPT stops recommending you because the algorithm can't confidently merge your profiles.</p>
+
+        <p>Let's look at the most common NAP mistakes we see—and the specific damage they cause.</p>
+
+        <h2>The 5 Most Damaging NAP Mistakes</h2>
+
+        <div class="mistake-card">
+            <div class="mistake-number">1</div>
+            <div class="mistake-title">Inconsistent Address Abbreviations</div>
+
+            <p>This is the single most common mistake. Your address is written in slightly different ways across different platforms.</p>
+
+            <div class="before-after">
+                <div class="before">
+                    <strong>WRONG</strong><br>
+                    123 Main St<br>
+                    123 Main Street<br>
+                    123 Main St.<br>
+                    123 Main Str
+                </div>
+                <div class="after">
+                    <strong>RIGHT</strong><br>
+                    123 Main Street<br>
+                    123 Main Street<br>
+                    123 Main Street<br>
+                    123 Main Street
+                </div>
+            </div>
+
+            <div class="impact">
+                <div class="impact-label">IMPACT ON RANKINGS</div>
+                <div class="impact-text">To a computer, these look like 4 different addresses. Your visibility is split across 4 profiles. Your ranking position is dragged down by 2-3 spots.</div>
+            </div>
+
+            <h4>Why it happens</h4>
+            <p>You're not paying attention to small formatting details. You enter your address one way on Google, another on Zillow (which auto-formats it), another on your website.</p>
+
+            <h4>The fix</h4>
+            <p>Choose one format and use it everywhere. Most directories accept "Street" spelled out. Use that format on all 7 directories.</p>
+
+            <h4>What to standardize</h4>
+            <ul>
+                <li>Street vs St vs St.</li>
+                <li>Road vs Rd vs Rd.</li>
+                <li>Avenue vs Ave vs Ave.</li>
+                <li>Boulevard vs Blvd vs Blvd.</li>
+                <li>Suite vs Ste vs Ste.</li>
+            </ul>
+        </div>
+
+        <div class="mistake-card">
+            <div class="mistake-number">2</div>
+            <div class="mistake-title">Phone Number Format Variations</div>
+
+            <p>You have the same phone number on different platforms, but formatted differently. Computers see formatting as part of the data.</p>
+
+            <div class="before-after">
+                <div class="before">
+                    <strong>WRONG</strong><br>
+                    555-123-4567<br>
+                    (555) 123-4567<br>
+                    555.123.4567<br>
+                    5551234567
+                </div>
+                <div class="after">
+                    <strong>RIGHT</strong><br>
+                    (555) 123-4567<br>
+                    (555) 123-4567<br>
+                    (555) 123-4567<br>
+                    (555) 123-4567
+                </div>
+            </div>
+
+            <div class="impact">
+                <div class="impact-label">IMPACT ON RANKINGS</div>
+                <div class="impact-text">Algorithms can't match the numbers. They think these might be different business locations. Your profile trust score drops by 30-40%.</div>
+            </div>
+
+            <h4>Why it happens</h4>
+            <p>Different directories automatically format phone numbers differently. Google uses one format, Zillow uses another. You rarely notice because humans read the number the same way regardless of format.</p>
+
+            <h4>The fix</h4>
+            <p>Use the international format "(555) 123-4567" on all platforms. This is the most widely accepted format and less likely to be auto-changed.</p>
+
+            <h4>Pro tip</h4>
+            <p>After you update a phone number, check it 24 hours later. Some directories auto-reformat it. If yours was changed, you need to manually re-enter it in their preferred format.</p>
+        </div>
+
+        <div class="mistake-card">
+            <div class="mistake-number">3</div>
+            <div class="mistake-title">Business Name Variations</div>
+
+            <p>You used different name variations when you set up different accounts. Now you have multiple versions of yourself online, and nobody knows they're the same person.</p>
+
+            <div class="before-after">
+                <div class="before">
+                    <strong>WRONG</strong><br>
+                    Sarah Smith Realty<br>
+                    S. Smith Real Estate<br>
+                    Sarah Smith Real Estate Group<br>
+                    Smith Realty Services
+                </div>
+                <div class="after">
+                    <strong>RIGHT</strong><br>
+                    Sarah Smith Realty<br>
+                    Sarah Smith Realty<br>
+                    Sarah Smith Realty<br>
+                    Sarah Smith Realty
+                </div>
+            </div>
+
+            <div class="impact">
+                <div class="impact-label">IMPACT ON RANKINGS</div>
+                <div class="impact-text">Each variation is treated as a separate business. Your reviews are split across profiles. Your credibility is diluted. AI can't figure out which one is "real."</div>
+            </div>
+
+            <h4>Why it happens</h4>
+            <p>You rebrand or change how you present yourself, but you don't go back and update all the old listings. Or you set up accounts casually without thinking about the exact legal name.</p>
+
+            <h4>The fix</h4>
+            <p>Pick your official business name (your legal DBA or how your broker lists you). Use that exact name on all platforms. No abbreviations. No variations.</p>
+
+            <h4>What to decide on</h4>
+            <ul>
+                <li>Full name or initials? (Sarah vs S. or S.M.)</li>
+                <li>Team name or individual? (Sarah Smith Realty vs Smith Team at ABC Realty)</li>
+                <li>Exact legal name or trading name?</li>
+            </ul>
+
+            <div class="callout">
+                <p><strong>Real example:</strong> An agent had "Sarah Smith Real Estate" on Google, "S. Smith Realty Group" on Zillow, and "Sarah M. Smith" on Realtor.com. Her reviews were scattered across 3 profiles. Combined, she had 47 five-star reviews. On Google alone? Only 12. After standardizing to "Sarah Smith Real Estate" everywhere, her combined visible reviews jumped to 31 on her main profile within 60 days.</p>
+            </div>
+        </div>
+
+        <div class="mistake-card">
+            <div class="mistake-number">4</div>
+            <div class="mistake-title">Outdated Information on Active Listings</div>
+
+            <p>You moved offices three years ago, but one directory still has your old address. Or you closed a phone number, but old listings still cite it.</p>
+
+            <div class="before-after">
+                <div class="before">
+                    <strong>WRONG</strong><br>
+                    Old Address:<br>
+                    321 Oak Ave, Suite A<br>
+                    (Old office from 2021)
+                </div>
+                <div class="after">
+                    <strong>RIGHT</strong><br>
+                    Current Address:<br>
+                    456 Pine Blvd, Suite 200<br>
+                    (Current office 2024)
+                </div>
+            </div>
+
+            <div class="impact">
+                <div class="impact-label">IMPACT ON RANKINGS</div>
+                <div class="impact-text">When someone tries to contact you using the old address, it fails. Trust drops immediately. AI thinks you've moved and might recommend a more stable agent.</div>
+            </div>
+
+            <h4>Why it happens</h4>
+            <p>You move offices and update your main platforms, but forget about the listings you set up years ago and haven't touched since. They're like digital zombies—old info, still appearing in search.</p>
+
+            <h4>The fix</h4>
+            <p>Go through every platform where you have a listing and update the address. Then update the phone number. Check every account you've ever created.</p>
+
+            <h4>Where to check</h4>
+            <ul>
+                <li>Old Zillow profiles you created and forgot about</li>
+                <li>Realtor.com (might still have your old office)</li>
+                <li>Local MLS directory listings</li>
+                <li>Yelp (you might not even know you have an account)</li>
+                <li>Facebook business pages from old offices</li>
+                <li>Abandoned Google Business Profiles</li>
+            </ul>
+        </div>
+
+        <div class="mistake-card">
+            <div class="mistake-number">5</div>
+            <div class="mistake-title">Forgotten Listings on Deleted Accounts</div>
+
+            <p>You closed an account, but the listing is still visible on the directory. Or worse: someone accessed the old account and updated it with wrong information.</p>
+
+            <p>This is particularly dangerous because the old listing might still appear in search results, and people have no idea it's orphaned data.</p>
+
+            <div class="impact">
+                <div class="impact-label">IMPACT ON RANKINGS</div>
+                <div class="impact-text">You appear to have multiple inconsistent profiles. AI gets confused about which one is real. You look disorganized or inactive. Some potential clients contact an abandoned account and never hear back.</div>
+            </div>
+
+            <h4>Why it happens</h4>
+            <p>You left a brokerage and didn't think to fully remove yourself from the old brokerage's directories. Or you deleted an account without realizing your data stayed in the directory system.</p>
+
+            <h4>The fix</h4>
+            <p>Search for yourself on each platform. If you find a profile you don't actively manage:</p>
+
+            <ol>
+                <li>Try to claim/log in to it</li>
+                <li>Update it to match your current info OR</li>
+                <li>Delete it completely if that's an option</li>
+                <li>Contact the directory support if you can't manage it</li>
+            </ol>
+
+            <h4>Places old listings hide</h4>
+            <ul>
+                <li>Old brokerage internal directories</li>
+                <li>Industry data aggregators that syndicate from other sources</li>
+                <li>Cached Google results (these eventually expire)</li>
+                <li>Local business listing sites you never remember signing up for</li>
+            </ul>
+        </div>
+
+        <div class="analogy">
+            <div class="analogy-header">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                </svg>
+                Think of it like introducing yourself
+            </div>
+            <p>Imagine meeting someone and introducing yourself three different ways: "Hi, I'm Sarah." Then later: "Hi, I'm S. Smith." Then: "Hi, I'm Sarah M. Smith Real Estate." They'd be confused about who you actually are. That's what NAP inconsistencies do to algorithms.</p>
+        </div>
+
+        <h2>How to check if you're making these mistakes</h2>
+
+        <p>The easiest way is to search for yourself on each of the 7 key directories:</p>
+
+        <ol>
+            <li>Google Business Profile — Search your name in Google</li>
+            <li>Zillow — Search your name on Zillow agent finder</li>
+            <li>Realtor.com — Search your name and state</li>
+            <li>Redfin — Search your name in your market</li>
+            <li>Yelp — Search your name and city</li>
+            <li>Facebook — Search your business page name</li>
+            <li>BBB — Search your name and location on bbb.org</li>
+        </ol>
+
+        <p>Write down exactly what you find. Then compare. Is the name spelled the same everywhere? Is the address formatted the same? Is the phone number in the same format?</p>
+
+        <p>Any mismatch = a mistake that needs fixing.</p>
+
+        <div class="cta-box">
+            <h3>Get a complete NAP audit (free)</h3>
+            <p>Instead of manually checking 7 directories, our tool does it in 30 seconds and shows you exactly where your inconsistencies are.</p>
+            <a href="/real-estate/" class="cta-button">
+                Run My NAP Audit (Free)
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+            </a>
+        </div>
+
+        <h2>The bottom line</h2>
+
+        <p>Most of these mistakes are easy to prevent. The hard part is finding them in the first place, because most of us don't proactively check every directory we've ever listed on.</p>
+
+        <p>But the cost of not fixing them is real. You're losing 2-5 leads per week just from visibility issues. And in real estate, leads are everything.</p>
+
+        <p>Good news: fixing these mistakes is straightforward work. Not fast, but straightforward. And the ROI is immediate.</p>
+
+        <p style="margin-top: 48px;"><strong>Related reading:</strong></p>
+        <ul>
+            <li><a href="/real-estate/fix-nap-inconsistencies/">How to Fix NAP Inconsistencies Across Your Listings</a> — Step-by-step guide</li>
+            <li><a href="/nap-real-estate">NAP Consistency for Real Estate Agents</a> — Why it matters</li>
+            <li><a href="/real-estate/directories-ai-trusts/">The 7 Directories AI Trusts Most</a> — Which ones to prioritize</li>
+        </ul>
+    </article>
+
+    <footer class="footer">
+        <p>A product of <a href="https://askandbefound.com">Ask and Be Found</a> · Helping businesses get discovered by AI</p>
+    </footer>
+</body>
+</html>
