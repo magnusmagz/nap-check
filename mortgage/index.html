@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NAP Check for Mortgage Advisors - Coming Soon | NAP Check</title>
-    <meta name="description" content="NAP consistency audit for mortgage advisors. Coming soon. Join the waitlist.">
+    <title>NAP Check - Mortgage Advisor NAP Audit Tool</title>
+    <meta name="description" content="Free NAP consistency audit tool for mortgage professionals. Check your business listings across 7 key mortgage directories including Zillow, NerdWallet, and more.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
+            /* Scientific palette - Ask's cousin with a doctorate */
             --primary-purple: #5B21B6;
             --primary-purple-light: #7C3AED;
             --secondary-teal: #0D9488;
+            --secondary-teal-light: #14B8A6;
             --text-primary: #1E1B4B;
             --text-secondary: #475569;
             --text-muted: #64748B;
@@ -18,33 +20,1128 @@
             --bg-subtle: #F5F3FF;
             --border-light: #E2E8F0;
             --white: #FFFFFF;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg-warm-white); min-height: 100vh; display: flex; flex-direction: column; }
-        .header { background: var(--white); border-bottom: 1px solid var(--border-light); padding: 16px 24px; }
-        .header-content { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--primary-purple), var(--secondary-teal)); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
-        .logo-icon svg { width: 22px; height: 22px; color: white; }
-        .logo-text { font-size: 20px; font-weight: 700; color: var(--text-primary); }
-        .logo-text span { color: var(--primary-purple); }
-        .content { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 24px; }
-        .coming-soon { text-align: center; max-width: 500px; }
-        .icon-wrapper { width: 80px; height: 80px; background: linear-gradient(135deg, rgba(91, 33, 182, 0.1), rgba(13, 148, 136, 0.1)); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; }
-        .icon-wrapper svg { width: 40px; height: 40px; color: var(--primary-purple); }
-        h1 { font-size: 32px; font-weight: 700; color: var(--text-primary); margin-bottom: 16px; }
-        p { color: var(--text-secondary); font-size: 18px; line-height: 1.6; margin-bottom: 32px; }
-        .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-purple); text-decoration: none; font-weight: 500; }
-        .back-link:hover { text-decoration: underline; }
-        .back-link svg { width: 18px; height: 18px; }
-        .footer { text-align: center; padding: 24px; border-top: 1px solid var(--border-light); color: var(--text-muted); font-size: 14px; }
-        .footer a { color: var(--primary-purple); text-decoration: none; }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-warm-white);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            padding: 16px 24px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-teal));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg {
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+
+        .logo-text {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .logo-text span {
+            color: var(--primary-purple);
+        }
+
+        .header-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-subtle);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--primary-purple);
+            font-weight: 500;
+        }
+
+        .header-badge svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Main content */
+        .main {
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 24px;
+            text-align: center;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(91, 33, 182, 0.1), rgba(13, 148, 136, 0.1));
+            border: 1px solid rgba(91, 33, 182, 0.2);
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--primary-purple);
+            margin-bottom: 24px;
+        }
+
+        .hero-eyebrow svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-light));
+            color: white;
+            padding: 18px 36px;
+            font-size: 17px;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(91, 33, 182, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(91, 33, 182, 0.4);
+        }
+
+        .cta-button svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Trust indicators */
+        .trust-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 48px;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .trust-item svg {
+            width: 18px;
+            height: 18px;
+            color: var(--secondary-teal);
+        }
+
+        /* Features section */
+        .features-section {
+            background: var(--white);
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+            padding: 80px 24px;
+        }
+
+        .features-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .features-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .features-header p {
+            color: var(--text-secondary);
+            font-size: 18px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+
+        .feature-card {
+            background: var(--bg-warm-white);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 32px 24px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary-purple);
+            box-shadow: 0 8px 30px rgba(91, 33, 182, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, rgba(91, 33, 182, 0.1), rgba(13, 148, 136, 0.1));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--primary-purple);
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* How it works */
+        .process-section {
+            padding: 80px 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .process-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .process-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .process-header p {
+            color: var(--text-secondary);
+            font-size: 18px;
+        }
+
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .process-step {
+            display: flex;
+            gap: 24px;
+            position: relative;
+        }
+
+        .step-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-teal));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-line {
+            width: 2px;
+            flex-grow: 1;
+            background: linear-gradient(180deg, var(--primary-purple), var(--secondary-teal));
+            opacity: 0.3;
+            min-height: 40px;
+        }
+
+        .process-step:last-child .step-line {
+            display: none;
+        }
+
+        .step-content {
+            padding-bottom: 40px;
+        }
+
+        .process-step:last-child .step-content {
+            padding-bottom: 0;
+        }
+
+        .step-content h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .step-content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Directories section */
+        .directories-section {
+            background: var(--white);
+            border-top: 1px solid var(--border-light);
+            padding: 80px 24px;
+        }
+
+        .directories-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .directories-header {
+            margin-bottom: 40px;
+        }
+
+        .directories-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .directories-header p {
+            color: var(--text-secondary);
+            font-size: 18px;
+        }
+
+        .directories-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .directory-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-warm-white);
+            border: 1px solid var(--border-light);
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .directory-badge svg {
+            width: 20px;
+            height: 20px;
+            color: var(--secondary-teal);
+        }
+
+        /* Final CTA */
+        .final-cta {
+            text-align: center;
+            padding: 80px 24px;
+            background: var(--bg-warm-white);
+            border-top: 1px solid var(--border-light);
+        }
+
+        .final-cta h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .final-cta p {
+            color: var(--text-secondary);
+            font-size: 18px;
+            margin-bottom: 32px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 32px 24px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: var(--primary-purple);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ============================================
+           TOOL INTERFACE STYLES
+           ============================================ */
+
+        .tool-container {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        .tool-container.active {
+            display: block;
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 48px;
+        }
+
+        .progress-step {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .progress-dot {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+            background: var(--border-light);
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .progress-dot.active {
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-teal));
+            color: white;
+        }
+
+        .progress-dot.completed {
+            background: var(--success);
+            color: white;
+        }
+
+        .progress-dot.completed svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .progress-line {
+            width: 60px;
+            height: 2px;
+            background: var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .progress-line.completed {
+            background: var(--success);
+        }
+
+        /* Tool cards */
+        .tool-card {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .tool-card-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .tool-card-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .tool-card-header p {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        /* Form styles */
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 16px;
+            font-family: inherit;
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            background: var(--bg-warm-white);
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-purple);
+            box-shadow: 0 0 0 3px rgba(91, 33, 182, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-hint {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
+        /* Directory checklist */
+        .directory-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .directory-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px;
+            background: var(--bg-warm-white);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .directory-item:hover {
+            border-color: var(--primary-purple-light);
+        }
+
+        .directory-logo {
+            width: 48px;
+            height: 48px;
+            background: var(--white);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-purple);
+            border: 1px solid var(--border-light);
+        }
+
+        .directory-info {
+            flex: 1;
+        }
+
+        .directory-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .directory-url {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .directory-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .search-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            background: var(--bg-subtle);
+            color: var(--primary-purple);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .search-link:hover {
+            background: var(--primary-purple);
+            color: white;
+        }
+
+        .search-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .status-buttons {
+            display: flex;
+            gap: 6px;
+        }
+
+        .status-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+            background: var(--white);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .status-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .status-btn.match {
+            color: var(--text-muted);
+        }
+
+        .status-btn.match:hover,
+        .status-btn.match.selected {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
+        .status-btn.mismatch {
+            color: var(--text-muted);
+        }
+
+        .status-btn.mismatch:hover,
+        .status-btn.mismatch.selected {
+            background: var(--error);
+            border-color: var(--error);
+            color: white;
+        }
+
+        .status-btn.notfound {
+            color: var(--text-muted);
+        }
+
+        .status-btn.notfound:hover,
+        .status-btn.notfound.selected {
+            background: var(--warning);
+            border-color: var(--warning);
+            color: white;
+        }
+
+        /* Button row */
+        .button-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 32px;
+            gap: 16px;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 24px;
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-muted);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-light));
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(91, 33, 182, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(91, 33, 182, 0.35);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-primary svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Results dashboard */
+        .score-display {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(91, 33, 182, 0.05), rgba(13, 148, 136, 0.05));
+            border-radius: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: var(--white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 30px rgba(91, 33, 182, 0.15);
+        }
+
+        .score-value {
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        .score-label {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .score-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .score-subtitle {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        /* Results breakdown */
+        .results-breakdown {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        @media (max-width: 600px) {
+            .results-breakdown {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .result-stat {
+            text-align: center;
+            padding: 24px;
+            background: var(--bg-warm-white);
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+        }
+
+        .result-stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .result-stat-value.match {
+            color: var(--success);
+        }
+
+        .result-stat-value.mismatch {
+            color: var(--error);
+        }
+
+        .result-stat-value.notfound {
+            color: var(--warning);
+        }
+
+        .result-stat-label {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* Results detail list */
+        .results-detail {
+            margin-top: 32px;
+        }
+
+        .results-detail h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .result-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: var(--bg-warm-white);
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+
+        .result-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .result-icon.match {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .result-icon.mismatch {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+        }
+
+        .result-icon.notfound {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+        }
+
+        .result-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .result-text {
+            flex: 1;
+        }
+
+        .result-directory {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .result-status {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* CTA box */
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-light));
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .cta-box h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .cta-box p {
+            opacity: 0.9;
+            margin-bottom: 24px;
+            font-size: 16px;
+        }
+
+        .cta-box .btn-white {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: white;
+            color: var(--primary-purple);
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .cta-box .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Email gate */
+        .email-gate {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .email-gate-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, rgba(91, 33, 182, 0.1), rgba(13, 148, 136, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .email-gate-icon svg {
+            width: 32px;
+            height: 32px;
+            color: var(--primary-purple);
+        }
+
+        .email-input-group {
+            display: flex;
+            gap: 12px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .email-input-group input {
+            flex: 1;
+        }
+
+        /* Hidden sections */
+        .landing-page {
+            display: block;
+        }
+
+        .landing-page.hidden {
+            display: none;
+        }
+
+        /* Legend */
+        .status-legend {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 24px;
+            padding: 16px;
+            background: var(--bg-subtle);
+            border-radius: 10px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.match {
+            background: var(--success);
+        }
+
+        .legend-dot.mismatch {
+            background: var(--error);
+        }
+
+        .legend-dot.notfound {
+            background: var(--warning);
+        }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header class="header">
         <div class="header-content">
-            <a href="/" class="logo">
+            <a href="/mortgage/" class="logo" onclick="showLanding(); return false;">
                 <div class="logo-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -52,29 +1149,727 @@
                 </div>
                 <span class="logo-text">NAP<span>Check</span></span>
             </a>
+            <div class="header-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" />
+                </svg>
+                Powered by Ask and Be Found
+            </div>
         </div>
     </header>
 
-    <div class="content">
-        <div class="coming-soon">
-            <div class="icon-wrapper">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
-                </svg>
-            </div>
-            <h1>Coming Soon for Mortgage Advisors</h1>
-            <p>We're building a tailored NAP audit for mortgage professionals, checking LendingTree, Bankrate, NerdWallet, and more. Join our waitlist to be first to know when it launches.</p>
-            <a href="/" class="back-link">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                </svg>
-                Back to Home
-            </a>
-        </div>
-    </div>
+    <main class="main">
+        <!-- ============================================
+             LANDING PAGE
+             ============================================ -->
+        <div class="landing-page" id="landingPage">
+            <!-- Hero -->
+            <section class="hero">
+                <div class="hero-eyebrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                    </svg>
+                    Free Mortgage NAP Audit Tool
+                </div>
+                <h1>Check Your <span class="highlight">Mortgage NAP Consistency</span> in Minutes</h1>
+                <p class="hero-subtitle">Inconsistent business info across mortgage directories hurts your local SEO and confuses AI assistants. Find out where your Name, Address, and Phone don't match on Zillow, NerdWallet, WalletHub, and more.</p>
+                <button class="cta-button" onclick="startTool()">
+                    Start My NAP Check
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                </button>
+                <div class="trust-row">
+                    <div class="trust-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        No credit card required
+                    </div>
+                    <div class="trust-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Takes under 10 minutes
+                    </div>
+                    <div class="trust-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
+                        </svg>
+                        Mortgage focused
+                    </div>
+                </div>
+            </section>
 
+            <!-- What You'll Discover -->
+            <section class="features-section">
+                <div class="features-container">
+                    <div class="features-header">
+                        <h2>What You'll Discover</h2>
+                        <p>A complete audit of your mortgage company's presence across key lending directories</p>
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <h3>Consistency Score</h3>
+                            <p>See at a glance how consistent your NAP data is across the 7 most important mortgage and lending directories.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                </svg>
+                            </div>
+                            <h3>Mismatch Alerts</h3>
+                            <p>Identify exactly which lending platforms have wrong information so you know where to make corrections.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" />
+                                </svg>
+                            </div>
+                            <h3>Priority Actions</h3>
+                            <p>Get a clear action plan for which mortgage listings to update first based on directory importance.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How It Works -->
+            <section class="process-section">
+                <div class="process-header">
+                    <h2>How It Works</h2>
+                    <p>Three simple steps to audit your mortgage listings</p>
+                </div>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-indicator">
+                            <div class="step-number">1</div>
+                            <div class="step-line"></div>
+                        </div>
+                        <div class="step-content">
+                            <h3>Enter Your Correct NAP</h3>
+                            <p>Tell us your mortgage company name, NMLS ID, address, phone, and other details exactly as they should appear across all directories.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-indicator">
+                            <div class="step-number">2</div>
+                            <div class="step-line"></div>
+                        </div>
+                        <div class="step-content">
+                            <h3>Check Each Mortgage Directory</h3>
+                            <p>We generate search links for each lending directory. Click through, find your listing, and mark whether it matches, has errors, or doesn't exist.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-indicator">
+                            <div class="step-number">3</div>
+                            <div class="step-line"></div>
+                        </div>
+                        <div class="step-content">
+                            <h3>Get Your Report</h3>
+                            <p>See your NAP consistency score and a detailed breakdown of which mortgage directories need attention.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Directories We Check -->
+            <section class="directories-section">
+                <div class="directories-container">
+                    <div class="directories-header">
+                        <h2>Directories We Check</h2>
+                        <p>The most important platforms for mortgage professionals and loan officers</p>
+                    </div>
+                    <div class="directories-grid">
+                        <div class="directory-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Google Business
+                        </div>
+                        <div class="directory-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Yelp
+                        </div>
+                        <div class="directory-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Zillow Lender Directory
+                        </div>
+                        <div class="directory-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            NerdWallet
+                        </div>
+                        <div class="directory-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            WalletHub
+                        </div>
+                        <div class="directory-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            FastExpert
+                        </div>
+                        <div class="directory-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            BBB
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Final CTA -->
+            <section class="final-cta">
+                <h2>Ready to Audit Your Mortgage Listings?</h2>
+                <p>Find inconsistencies before they cost you borrowers.</p>
+                <button class="cta-button" onclick="startTool()">
+                    Start My NAP Check
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                </button>
+            </section>
+        </div>
+
+        <!-- ============================================
+             TOOL INTERFACE
+             ============================================ -->
+        <div class="tool-container" id="toolContainer">
+            <!-- Progress Bar -->
+            <div class="progress-bar">
+                <div class="progress-step">
+                    <div class="progress-dot active" id="progressDot1">1</div>
+                </div>
+                <div class="progress-line" id="progressLine1"></div>
+                <div class="progress-step">
+                    <div class="progress-dot" id="progressDot2">2</div>
+                </div>
+                <div class="progress-line" id="progressLine2"></div>
+                <div class="progress-step">
+                    <div class="progress-dot" id="progressDot3">3</div>
+                </div>
+            </div>
+
+            <!-- Step 1: Enter NAP -->
+            <div class="tool-card" id="step1">
+                <div class="tool-card-header">
+                    <h2>Enter Your Business Information</h2>
+                    <p>This is your "source of truth" — exactly how your mortgage company info should appear everywhere</p>
+                </div>
+
+                <form id="napForm">
+                    <div class="form-group">
+                        <label for="businessName">Company Name *</label>
+                        <input type="text" id="businessName" placeholder="e.g., Summit Mortgage Group" required>
+                        <p class="form-hint">Include Inc., LLC, etc. if that's how it appears on official documents</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nmlsId">NMLS ID</label>
+                        <input type="text" id="nmlsId" placeholder="e.g., 123456">
+                        <p class="form-hint">Your individual or company NMLS number</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="streetAddress">Street Address *</label>
+                        <input type="text" id="streetAddress" placeholder="e.g., 123 Main Street, Suite 100" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City *</label>
+                            <input type="text" id="city" placeholder="e.g., Austin" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State *</label>
+                            <input type="text" id="state" placeholder="e.g., TX" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="zip">ZIP Code *</label>
+                            <input type="text" id="zip" placeholder="e.g., 78701" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" placeholder="e.g., (512) 555-1234" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="website">Website URL</label>
+                        <input type="url" id="website" placeholder="e.g., https://www.summitmortgage.com">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Business Email</label>
+                            <input type="email" id="email" placeholder="e.g., info@summitmortgage.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="hours">Business Hours</label>
+                            <input type="text" id="hours" placeholder="e.g., Mon-Fri 9am-5pm">
+                        </div>
+                    </div>
+
+                    <div class="button-row">
+                        <div></div>
+                        <button type="submit" class="btn-primary">
+                            Continue to Directory Check
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Step 2: Check Directories -->
+            <div class="tool-card" id="step2" style="display: none;">
+                <div class="tool-card-header">
+                    <h2>Check Each Mortgage Directory</h2>
+                    <p>Click "Search" to find your listing, then mark whether it matches your info</p>
+                </div>
+
+                <div class="status-legend">
+                    <div class="legend-item">
+                        <div class="legend-dot match"></div>
+                        Matches
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot mismatch"></div>
+                        Has Errors
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot notfound"></div>
+                        Not Found
+                    </div>
+                </div>
+
+                <div class="directory-list" id="directoryList">
+                    <!-- Populated by JavaScript -->
+                </div>
+
+                <div class="button-row">
+                    <button type="button" class="btn-secondary" onclick="goToStep(1)">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                        </svg>
+                        Back
+                    </button>
+                    <button type="button" class="btn-primary" id="continueToResults" onclick="goToStep(3)" disabled>
+                        See My Results
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Email Gate & Results -->
+            <div class="tool-card" id="step3" style="display: none;">
+                <!-- Email Gate (shown first) -->
+                <div id="emailGate">
+                    <div class="tool-card-header">
+                        <h2>Almost There!</h2>
+                        <p>Enter your email to see your full NAP consistency report</p>
+                    </div>
+
+                    <div class="email-gate">
+                        <div class="email-gate-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                            </svg>
+                        </div>
+
+                        <form id="emailForm" class="email-input-group">
+                            <input type="email" id="userEmail" placeholder="your@email.com" required>
+                            <button type="submit" class="btn-primary">
+                                View Report
+                            </button>
+                        </form>
+
+                        <p class="form-hint" style="margin-top: 16px; text-align: center;">We'll send you a copy of your results. No spam, ever.</p>
+                    </div>
+
+                    <div class="button-row" style="margin-top: 24px;">
+                        <button type="button" class="btn-secondary" onclick="goToStep(2)">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                            </svg>
+                            Back
+                        </button>
+                        <div></div>
+                    </div>
+                </div>
+
+                <!-- Results Dashboard (shown after email) -->
+                <div id="resultsSection" style="display: none;">
+                    <div class="score-display">
+                        <div class="score-circle">
+                            <div class="score-value" id="scoreValue">0%</div>
+                            <div class="score-label">consistency</div>
+                        </div>
+                        <h3 class="score-title" id="scoreTitle">Your NAP Consistency Score</h3>
+                        <p class="score-subtitle" id="scoreSubtitle">Based on 7 directory checks</p>
+                    </div>
+
+                    <div class="results-breakdown">
+                        <div class="result-stat">
+                            <div class="result-stat-value match" id="matchCount">0</div>
+                            <div class="result-stat-label">Matches</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-value mismatch" id="mismatchCount">0</div>
+                            <div class="result-stat-label">Errors Found</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-value notfound" id="notfoundCount">0</div>
+                            <div class="result-stat-label">Not Listed</div>
+                        </div>
+                    </div>
+
+                    <div class="results-detail">
+                        <h3>Directory Breakdown</h3>
+                        <div id="resultsDetail">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="cta-box">
+                        <h3>Need Help Fixing These Issues?</h3>
+                        <p>Our team can update and optimize your mortgage listings across all directories.</p>
+                        <a href="https://askandbefound.com" target="_blank" class="btn-white">
+                            Get Expert Help
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="button-row" style="margin-top: 32px;">
+                        <button type="button" class="btn-secondary" onclick="startOver()">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                            </svg>
+                            Start Over
+                        </button>
+                        <button type="button" class="btn-primary" onclick="window.print()">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0110.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0l.229 2.523a1.125 1.125 0 01-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0021 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 00-1.913-.247M6.34 18H5.25A2.25 2.25 0 013 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 011.913-.247m10.5 0a48.536 48.536 0 00-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5zm-3 0h.008v.008H15V10.5z" />
+                            </svg>
+                            Print Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
     <footer class="footer">
-        <p>A product of <a href="https://askandbefound.com">Ask and Be Found</a></p>
+        <p>A product of <a href="https://askandbefound.com">Ask and Be Found</a> · Helping businesses get discovered by AI</p>
     </footer>
+
+    <script>
+        // Directory data
+        const directories = [
+            {
+                id: 'google',
+                name: 'Google Business',
+                shortName: 'G',
+                searchUrl: (query) => `https://www.google.com/search?q=${encodeURIComponent(query + ' mortgage')}`,
+                status: null
+            },
+            {
+                id: 'yelp',
+                name: 'Yelp',
+                shortName: 'Y',
+                searchUrl: (query) => `https://www.google.com/search?q=${encodeURIComponent('site:yelp.com ' + query)}`,
+                status: null
+            },
+            {
+                id: 'zillow',
+                name: 'Zillow Lender Directory',
+                shortName: 'Z',
+                searchUrl: (query) => `https://www.google.com/search?q=${encodeURIComponent('site:zillow.com ' + query)}`,
+                status: null
+            },
+            {
+                id: 'nerdwallet',
+                name: 'NerdWallet',
+                shortName: 'NW',
+                searchUrl: (query) => `https://www.google.com/search?q=${encodeURIComponent('site:nerdwallet.com ' + query)}`,
+                status: null
+            },
+            {
+                id: 'wallethub',
+                name: 'WalletHub',
+                shortName: 'WH',
+                searchUrl: (query) => `https://www.google.com/search?q=${encodeURIComponent('site:wallethub.com ' + query)}`,
+                status: null
+            },
+            {
+                id: 'fastexpert',
+                name: 'FastExpert',
+                shortName: 'FE',
+                searchUrl: (query) => `https://www.google.com/search?q=${encodeURIComponent('site:fastexpert.com ' + query)}`,
+                status: null
+            },
+            {
+                id: 'bbb',
+                name: 'BBB',
+                shortName: 'BBB',
+                searchUrl: (query) => `https://www.google.com/search?q=${encodeURIComponent('site:bbb.org ' + query)}`,
+                status: null
+            }
+        ];
+
+        // State
+        let currentStep = 1;
+        let napData = {};
+
+        // Show landing page
+        function showLanding() {
+            document.getElementById('landingPage').classList.remove('hidden');
+            document.getElementById('toolContainer').classList.remove('active');
+            currentStep = 1;
+            resetTool();
+        }
+
+        // Start the tool
+        function startTool() {
+            document.getElementById('landingPage').classList.add('hidden');
+            document.getElementById('toolContainer').classList.add('active');
+            goToStep(1);
+            window.scrollTo(0, 0);
+        }
+
+        // Navigate to step
+        function goToStep(step) {
+            currentStep = step;
+
+            // Update progress bar
+            for (let i = 1; i <= 3; i++) {
+                const dot = document.getElementById(`progressDot${i}`);
+                const line = document.getElementById(`progressLine${i}`);
+
+                if (i < step) {
+                    dot.classList.remove('active');
+                    dot.classList.add('completed');
+                    dot.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>';
+                    if (line) line.classList.add('completed');
+                } else if (i === step) {
+                    dot.classList.add('active');
+                    dot.classList.remove('completed');
+                    dot.innerHTML = i;
+                    if (line) line.classList.remove('completed');
+                } else {
+                    dot.classList.remove('active', 'completed');
+                    dot.innerHTML = i;
+                    if (line) line.classList.remove('completed');
+                }
+            }
+
+            // Show/hide steps
+            document.getElementById('step1').style.display = step === 1 ? 'block' : 'none';
+            document.getElementById('step2').style.display = step === 2 ? 'block' : 'none';
+            document.getElementById('step3').style.display = step === 3 ? 'block' : 'none';
+
+            window.scrollTo(0, 100);
+        }
+
+        // Form submission - Step 1
+        document.getElementById('napForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            napData = {
+                businessName: document.getElementById('businessName').value,
+                nmlsId: document.getElementById('nmlsId').value,
+                streetAddress: document.getElementById('streetAddress').value,
+                city: document.getElementById('city').value,
+                state: document.getElementById('state').value,
+                zip: document.getElementById('zip').value,
+                phone: document.getElementById('phone').value,
+                website: document.getElementById('website').value,
+                email: document.getElementById('email').value,
+                hours: document.getElementById('hours').value
+            };
+
+            populateDirectoryList();
+            goToStep(2);
+        });
+
+        // Populate directory list
+        function populateDirectoryList() {
+            const container = document.getElementById('directoryList');
+            const searchQuery = `${napData.businessName} ${napData.city} ${napData.state}`;
+
+            container.innerHTML = directories.map(dir => `
+                <div class="directory-item" data-id="${dir.id}">
+                    <div class="directory-logo">${dir.shortName}</div>
+                    <div class="directory-info">
+                        <div class="directory-name">${dir.name}</div>
+                        <div class="directory-url">Search for your listing</div>
+                    </div>
+                    <div class="directory-actions">
+                        <a href="${dir.searchUrl(searchQuery)}" target="_blank" class="search-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                            </svg>
+                            Search
+                        </a>
+                        <div class="status-buttons">
+                            <button type="button" class="status-btn match" onclick="setStatus('${dir.id}', 'match')" title="NAP Matches">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                </svg>
+                            </button>
+                            <button type="button" class="status-btn mismatch" onclick="setStatus('${dir.id}', 'mismatch')" title="Has Errors">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                            <button type="button" class="status-btn notfound" onclick="setStatus('${dir.id}', 'notfound')" title="Not Found">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Set directory status
+        function setStatus(directoryId, status) {
+            const dir = directories.find(d => d.id === directoryId);
+            if (dir) {
+                dir.status = status;
+            }
+
+            // Update button UI
+            const item = document.querySelector(`.directory-item[data-id="${directoryId}"]`);
+            const buttons = item.querySelectorAll('.status-btn');
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            item.querySelector(`.status-btn.${status}`).classList.add('selected');
+
+            // Check if all directories have been checked
+            checkAllChecked();
+        }
+
+        // Check if all directories are checked
+        function checkAllChecked() {
+            const allChecked = directories.every(d => d.status !== null);
+            document.getElementById('continueToResults').disabled = !allChecked;
+        }
+
+        // Email form submission
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('userEmail').value;
+
+            // Here you would send the email and data to your backend
+            console.log('Lead captured:', { email, napData, results: directories });
+
+            // Show results
+            document.getElementById('emailGate').style.display = 'none';
+            document.getElementById('resultsSection').style.display = 'block';
+
+            calculateAndShowResults();
+        });
+
+        // Calculate and show results
+        function calculateAndShowResults() {
+            const matches = directories.filter(d => d.status === 'match').length;
+            const mismatches = directories.filter(d => d.status === 'mismatch').length;
+            const notfound = directories.filter(d => d.status === 'notfound').length;
+
+            const score = Math.round((matches / directories.length) * 100);
+
+            document.getElementById('scoreValue').textContent = score + '%';
+            document.getElementById('matchCount').textContent = matches;
+            document.getElementById('mismatchCount').textContent = mismatches;
+            document.getElementById('notfoundCount').textContent = notfound;
+
+            // Update score title based on score
+            let title = 'Your NAP Consistency Score';
+            if (score >= 80) {
+                title = 'Great Work! Your Mortgage NAP is Mostly Consistent';
+            } else if (score >= 50) {
+                title = 'Room for Improvement';
+            } else {
+                title = 'Action Needed: Multiple Inconsistencies Found';
+            }
+            document.getElementById('scoreTitle').textContent = title;
+
+            // Populate detail list
+            const detailContainer = document.getElementById('resultsDetail');
+            detailContainer.innerHTML = directories.map(dir => {
+                let statusText = '';
+                let statusClass = '';
+                let iconSvg = '';
+
+                if (dir.status === 'match') {
+                    statusText = 'NAP matches correctly';
+                    statusClass = 'match';
+                    iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>';
+                } else if (dir.status === 'mismatch') {
+                    statusText = 'Has incorrect information — needs update';
+                    statusClass = 'mismatch';
+                    iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>';
+                } else {
+                    statusText = 'Listing not found — consider creating one';
+                    statusClass = 'notfound';
+                    iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>';
+                }
+
+                return `
+                    <div class="result-item">
+                        <div class="result-icon ${statusClass}">${iconSvg}</div>
+                        <div class="result-text">
+                            <div class="result-directory">${dir.name}</div>
+                            <div class="result-status">${statusText}</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Reset tool
+        function resetTool() {
+            directories.forEach(d => d.status = null);
+            napData = {};
+            document.getElementById('napForm').reset();
+            document.getElementById('emailForm').reset();
+            document.getElementById('emailGate').style.display = 'block';
+            document.getElementById('resultsSection').style.display = 'none';
+            document.getElementById('continueToResults').disabled = true;
+        }
+
+        // Start over
+        function startOver() {
+            resetTool();
+            goToStep(1);
+        }
+    </script>
 </body>
 </html>
